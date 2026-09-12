@@ -1,0 +1,127 @@
+<app-page-hero
+  eyebrow="Contact"
+  title="Échangeons autour de"
+  accent="votre projet."
+>
+  <p class="lead" style="margin-top:1.5rem;max-width:58ch;">
+    Vous avez une idée, une envie d'évolution ou simplement besoin d'y voir plus clair ? Chaque
+    accompagnement commence par un premier échange. Il n'est pas nécessaire d'avoir déjà toutes les réponses.
+  </p>
+</app-page-hero>
+
+<section class="section contact">
+  <div class="container contact__grid">
+    <!-- Info -->
+    <aside class="contact__info" appReveal>
+      <h2 class="display-3">Vous pouvez me contacter pour…</h2>
+      <ul class="contact__reasons">
+        @for (r of reasons; track r) {
+          <li><app-icon name="check" [size]="15" [strokeWidth]="2.4" /><span>{{ r }}</span></li>
+        }
+      </ul>
+
+      <div class="contact__cards">
+        <a class="cinfo" [href]="'mailto:' + config.email" data-testid="contact-email-link">
+          <span class="cinfo__icon"><app-icon name="mail" [size]="20" /></span>
+          <span><strong>Email</strong>{{ config.email }}</span>
+        </a>
+        <a class="cinfo" [href]="'tel:' + config.phone" data-testid="contact-phone-link">
+          <span class="cinfo__icon"><app-icon name="phone" [size]="20" /></span>
+          <span><strong>Téléphone</strong>{{ config.phoneDisplay }}</span>
+        </a>
+        <div class="cinfo">
+          <span class="cinfo__icon"><app-icon name="map-pin" [size]="20" /></span>
+          <span><strong>Localisation</strong>À distance partout en France · présentiel autour de Mulhouse</span>
+        </div>
+      </div>
+
+      <div class="contact__book">
+        <p><strong>Prenons rendez-vous.</strong> Réservez un premier échange pour faire connaissance et découvrir votre projet.</p>
+        <app-button [href]="config.bookingUrl" [external]="true" iconLeft="calendar" testid="contact-book-btn">
+          Prendre rendez-vous
+        </app-button>
+      </div>
+    </aside>
+
+    <!-- Form -->
+    <div class="contact__formwrap" appReveal>
+      @if (sent()) {
+        <div class="success" data-testid="contact-success" role="status" aria-live="polite">
+          <span class="success__icon"><app-icon name="check-circle" [size]="42" /></span>
+          <h3>Votre message est prêt à être envoyé</h3>
+          <p>Votre logiciel de messagerie vient de s'ouvrir avec votre demande pré-remplie. Il ne vous
+            reste plus qu'à l'envoyer. Au plaisir d'échanger avec vous&nbsp;!</p>
+          <app-button variant="outline" (click)="resetForm()" testid="contact-reset-btn">Envoyer une autre demande</app-button>
+        </div>
+      } @else {
+        <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate data-testid="contact-form">
+          <h3 class="form__title">Votre demande</h3>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="prenom">Prénom <span aria-hidden="true">*</span></label>
+              <input id="prenom" type="text" formControlName="prenom" autocomplete="given-name"
+                [class.is-error]="invalid('prenom')" [attr.aria-invalid]="invalid('prenom')"
+                data-testid="contact-prenom" />
+              @if (invalid('prenom')) { <p class="field__error">Merci d'indiquer votre prénom.</p> }
+            </div>
+            <div class="field">
+              <label for="nom">Nom <span aria-hidden="true">*</span></label>
+              <input id="nom" type="text" formControlName="nom" autocomplete="family-name"
+                [class.is-error]="invalid('nom')" [attr.aria-invalid]="invalid('nom')"
+                data-testid="contact-nom" />
+              @if (invalid('nom')) { <p class="field__error">Merci d'indiquer votre nom.</p> }
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="email">Email <span aria-hidden="true">*</span></label>
+              <input id="email" type="email" formControlName="email" autocomplete="email"
+                [class.is-error]="invalid('email')" [attr.aria-invalid]="invalid('email')"
+                data-testid="contact-email" />
+              @if (invalid('email')) { <p class="field__error">Merci d'indiquer une adresse email valide.</p> }
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone <span class="field__opt">(facultatif)</span></label>
+              <input id="telephone" type="tel" formControlName="telephone" autocomplete="tel" data-testid="contact-telephone" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="source">Comment avez-vous connu Mévolia ? <span class="field__opt">(facultatif)</span></label>
+            <input id="source" type="text" formControlName="source" data-testid="contact-source" />
+          </div>
+
+          <div class="field">
+            <label for="demande">Votre demande <span aria-hidden="true">*</span></label>
+            <div class="select">
+              <select id="demande" formControlName="demande"
+                [class.is-error]="invalid('demande')" [attr.aria-invalid]="invalid('demande')"
+                data-testid="contact-demande">
+                <option value="" disabled>Sélectionnez un sujet…</option>
+                @for (type of requestTypes; track type) { <option [value]="type">{{ type }}</option> }
+              </select>
+              <span class="select__chevron" aria-hidden="true"><app-icon name="chevron-down" [size]="18" /></span>
+            </div>
+            @if (invalid('demande')) { <p class="field__error">Merci de sélectionner le type de demande.</p> }
+          </div>
+
+          <div class="field">
+            <label for="message">Votre message <span aria-hidden="true">*</span></label>
+            <textarea id="message" rows="5" formControlName="message"
+              [class.is-error]="invalid('message')" [attr.aria-invalid]="invalid('message')"
+              placeholder="Décrivez votre projet, votre besoin ou votre question…"
+              data-testid="contact-message"></textarea>
+            @if (invalid('message')) { <p class="field__error">Merci d'écrire un message (10 caractères minimum).</p> }
+          </div>
+
+          <app-button type="submit" size="lg" [block]="true" iconRight="arrow-right" testid="contact-submit-btn">
+            Envoyer ma demande
+          </app-button>
+          <p class="form__note">En envoyant ce formulaire, votre logiciel de messagerie s'ouvrira avec votre demande pré-remplie.</p>
+        </form>
+      }
+    </div>
+  </div>
+</section>

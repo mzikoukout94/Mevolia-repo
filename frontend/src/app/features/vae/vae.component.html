@@ -1,0 +1,109 @@
+<app-page-hero
+  eyebrow="Accompagnement VAE"
+  title="Faites reconnaître"
+  accent="votre expérience."
+  [image]="images.workspace"
+  imageAlt="Constitution d'un dossier de Validation des Acquis de l'Expérience"
+>
+  <p class="lead" style="margin-top:1.5rem;max-width:56ch;">
+    La Validation des Acquis de l'Expérience (VAE) permet de transformer votre expérience en une
+    certification reconnue. Je vous accompagne à chaque étape, avec une approche structurée et bienveillante.
+  </p>
+  <div actions>
+    <app-button variant="olive" [href]="config.bookingUrl" [external]="true" iconRight="arrow-right" testid="vae-cta-btn">
+      Parlons de votre projet
+    </app-button>
+  </div>
+</app-page-hero>
+
+<!-- Pour qui -->
+<section class="section recognize">
+  <div class="container recognize__grid">
+    <div class="recognize__head" appReveal>
+      <span class="eyebrow">La VAE, pour qui ?</span>
+      <h2 class="display-3" style="margin-top:1rem;">Une opportunité de valoriser votre parcours</h2>
+      <p class="text-muted" style="margin-top:1rem;">
+        Que vous soyez salarié, indépendant, demandeur d'emploi, agent public ou bénévole, la VAE peut
+        vous permettre de :
+      </p>
+    </div>
+    <div class="recognize__list" appReveal>
+      <app-checklist [items]="benefits" />
+    </div>
+  </div>
+</section>
+
+<!-- Parcours -->
+<section class="section method">
+  <div class="container">
+    <app-section-heading align="center" eyebrow="Le parcours VAE" title="Les 5 étapes de" accent="votre parcours" />
+    <app-process-timeline [steps]="parcours" />
+  </div>
+</section>
+
+<!-- Why accompany -->
+<section class="section">
+  <div class="container split-grid">
+    <div appReveal>
+      <app-section-heading eyebrow="Pourquoi se faire accompagner" title="Démontrer, pas seulement" accent="raconter" />
+      <p class="text-muted lead-narrow">
+        Constituer un dossier VAE ne consiste pas à raconter son parcours. Il s'agit de démontrer, à
+        travers des situations professionnelles concrètes, les compétences développées en lien avec le
+        référentiel de la certification visée.
+      </p>
+    </div>
+    <div class="recognize__list" appReveal>
+      <app-checklist [items]="whyAccompany" />
+    </div>
+  </div>
+</section>
+
+<!-- Mon accompagnement -->
+<section class="section accomp">
+  <div class="container accomp__inner">
+    <app-section-heading align="center" eyebrow="Mon accompagnement" title="À vos côtés, à" accent="chaque étape" subtitle="Chaque parcours est unique. Mon accompagnement s'adapte à vos besoins et à l'avancement de votre projet." />
+    <app-step-list [items]="accompaniment" accent="olive" />
+  </div>
+</section>
+
+<!-- Modalities -->
+<section class="section modalities-sec">
+  <div class="container">
+    <app-section-heading align="center" eyebrow="Modalités pratiques" title="Un accompagnement" accent="sur mesure" />
+    <app-feature-band [features]="modalities" />
+    <p class="modalities-note" appReveal>
+      Après notre premier échange, une proposition vous est adressée <strong>sous 48 heures</strong>.
+      L'accompagnement peut débuter sous une à trois semaines. Plusieurs dispositifs de financement (CPF,
+      employeur, France Travail…) peuvent être mobilisés selon votre situation.
+    </p>
+  </div>
+</section>
+
+<!-- Why choose -->
+<section class="section why">
+  <div class="container why__grid">
+    <div appReveal>
+      <app-section-heading eyebrow="Pourquoi Mévolia" title="Pourquoi choisir" accent="Mévolia ?" />
+      <app-checklist [items]="whyChoose" />
+    </div>
+    <aside class="modalities" appReveal>
+      <span class="modalities__icon"><app-icon name="shield" [size]="26" /></span>
+      <h3>Un interlocuteur unique</h3>
+      <p>Je vous aide à prendre du recul sur votre parcours, à identifier vos compétences et à les mettre en valeur de manière claire et structurée, tout au long de votre démarche.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-sec">
+  <div class="container faq-sec__inner">
+    <app-section-heading align="center" eyebrow="Questions fréquentes" title="Vos questions," accent="mes réponses" />
+    <app-faq-accordion [items]="faqs" />
+  </div>
+</section>
+
+<app-cta-banner
+  title="Un projet de VAE ?"
+  subtitle="Vous souhaitez faire reconnaître votre expérience mais ne savez pas par où commencer ? Construisons ensemble un accompagnement adapté."
+  buttonLabel="Prendre rendez-vous"
+/>

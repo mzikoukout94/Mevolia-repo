@@ -1,0 +1,25 @@
+.legal { background: var(--cream-50); }
+.legal__inner { max-width: 780px; margin: 0 auto; }
+
+.legal__crumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 1.5rem;
+}
+.legal__crumb a { color: var(--terracotta); font-weight: 600; }
+.legal__crumb app-icon { color: var(--ink-mute); }
+
+.legal__intro { margin: 1rem 0 2.5rem; }
+
+.legal__section { margin-bottom: 2rem; }
+.legal__section h2 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.legal__section p { color: var(--ink-soft); margin-bottom: 0.75rem; }
+
+.legal__note {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--olive-100);
+  border-radius: var(--r-md);
+  padding: 1.25rem 1.5rem;
+  margin-top: 2.5rem;
+}
+.legal__note app-icon { color: var(--olive); flex-shrink: 0; margin-top: 3px; }
+.legal__note p { margin: 0; color: var(--olive-dark); font-size: 0.94rem; }

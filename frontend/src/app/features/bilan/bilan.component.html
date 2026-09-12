@@ -1,0 +1,128 @@
+<app-page-hero
+  eyebrow="Bilan de compétences"
+  title="Faire le point, pour"
+  accent="avancer plus sereinement."
+  [image]="images.collaboration"
+  imageAlt="Accompagnement lors d'un bilan de compétences"
+>
+  <p class="lead" style="margin-top:1.5rem;max-width:56ch;">
+    Le bilan de compétences est un temps que l'on s'accorde pour réfléchir à son parcours, mieux
+    comprendre ce qui nous motive et construire la suite avec davantage de clarté. Je vous accompagne
+    avec écoute, méthode et sans jugement.
+  </p>
+  <div actions>
+    <app-button variant="olive" [href]="config.bookingUrl" [external]="true" iconRight="arrow-right" testid="bilan-cta-btn">
+      Parlons de votre projet
+    </app-button>
+  </div>
+</app-page-hero>
+
+<!-- Reasons -->
+<section class="section recognize">
+  <div class="container recognize__grid">
+    <div class="recognize__head" appReveal>
+      <span class="eyebrow">Pourquoi faire un bilan ?</span>
+      <h2 class="display-3" style="margin-top:1rem;">Explorer avant de choisir</h2>
+      <p class="text-muted" style="margin-top:1rem;">
+        Il n'est pas nécessaire d'avoir un projet déjà défini. Le bilan permet justement de prendre le
+        temps d'explorer différentes pistes. Il peut vous permettre de :
+      </p>
+    </div>
+    <div class="recognize__list" appReveal>
+      <app-checklist [items]="reasons" />
+    </div>
+  </div>
+</section>
+
+<!-- Why accompany -->
+<section class="section">
+  <div class="container split-grid">
+    <div appReveal>
+      <app-section-heading eyebrow="Pourquoi se faire accompagner" title="Un regard extérieur pour" accent="avancer" />
+      <p class="text-muted lead-narrow">
+        Faire un bilan ne consiste pas simplement à répondre à des questionnaires. C'est une démarche de
+        réflexion qui demande du temps, de la méthode et un regard extérieur pour analyser son parcours
+        avec recul.
+      </p>
+    </div>
+    <div class="recognize__list" appReveal>
+      <app-checklist [items]="whyAccompany" />
+    </div>
+  </div>
+</section>
+
+<!-- Phases réglementaires -->
+<section class="section method">
+  <div class="container">
+    <app-section-heading align="center" eyebrow="Le cadre réglementaire" title="Les 3 phases du" accent="bilan de compétences" subtitle="Le bilan se déroule conformément aux trois phases prévues par la réglementation." />
+    <div class="phases">
+      @for (phase of phases; track phase.title; let i = $index) {
+        <article class="phase" [appReveal]="i * 110">
+          <span class="phase__num">0{{ i + 1 }}</span>
+          <h3 class="phase__title">{{ phase.title }}</h3>
+          <p class="phase__desc">{{ phase.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Mon accompagnement -->
+<section class="section accomp">
+  <div class="container accomp__inner">
+    <app-section-heading align="center" eyebrow="Mon accompagnement" title="Un cheminement en" accent="cinq temps" subtitle="Un temps de réflexion et d'action pour construire un projet professionnel qui vous ressemble." />
+    <app-step-list [items]="accompaniment" accent="ochre" />
+  </div>
+</section>
+
+<!-- Modalities -->
+<section class="section modalities-sec">
+  <div class="container">
+    <app-section-heading align="center" eyebrow="Modalités pratiques" title="Un cadre" accent="clair et confidentiel" />
+    <app-feature-band [features]="modalities" />
+  </div>
+</section>
+
+<!-- Confidentiality band -->
+<section class="section-tight">
+  <div class="container">
+    <div class="confid" appReveal>
+      <span class="confid__icon"><app-icon name="shield" [size]="30" /></span>
+      <div>
+        <h3>Une démarche confidentielle</h3>
+        <p>Le bilan de compétences est une démarche strictement confidentielle. Les résultats et le
+          document de synthèse restent la propriété exclusive du bénéficiaire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why choose -->
+<section class="section why">
+  <div class="container why__grid">
+    <div appReveal>
+      <app-section-heading eyebrow="Pourquoi Mévolia" title="Pourquoi choisir" accent="Mévolia ?" />
+      <app-checklist [items]="whyChoose" />
+    </div>
+    <aside class="modalities" appReveal>
+      <span class="modalities__icon"><app-icon name="heart" [size]="26" /></span>
+      <h3>De la réflexion à l'action</h3>
+      <p>L'objectif n'est pas de repartir avec un métier « tout trouvé », mais avec une vision claire de
+        votre situation, des choix qui s'offrent à vous et des prochaines étapes à engager.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-sec">
+  <div class="container faq-sec__inner">
+    <app-section-heading align="center" eyebrow="Questions fréquentes" title="Vos questions," accent="mes réponses" />
+    <app-faq-accordion [items]="faqs" />
+  </div>
+</section>
+
+<app-cta-banner
+  title="Un projet d'évolution professionnelle ?"
+  subtitle="Vous ressentez le besoin de faire le point mais ne savez pas encore quelle direction prendre ? Échangeons ensemble."
+  buttonLabel="Prendre rendez-vous"
+/>

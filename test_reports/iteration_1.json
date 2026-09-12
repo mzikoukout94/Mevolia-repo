@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only testing of the Mévolia Angular 18 site. Tested home rendering, header nav + 'Mes accompagnements' dropdown, all 6 feature routes + 4 legal routes, FAQ accordion behavior on /vae, Contact form validation flow (empty / invalid email / valid), Calendly booking anchors (header/cta/contact), 404 wildcard route, and mobile responsiveness at 390x844. All primary flows work and no console errors were observed. One clear responsive bug found: horizontal overflow on ALL pages at mobile width because the mobile drawer element is left in the DOM positioned off-screen (right edge at 750px) with no overflow-x:hidden on html/body, so documentElement.scrollWidth = 750 on a 390px viewport.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "MobileDrawer / global layout", "issue": "At 390px viewport, the closed mobile drawer is rendered off-canvas (left≈407, right≈750, width=343) without overflow-x:hidden on html/body. This causes documentElement.scrollWidth=750 on every page (/, /a-propos, /conception-pedagogique, /vae, /contact, etc.), i.e. horizontal scroll/overflow on mobile — violates the explicit requirement 'NO horizontal overflow/scroll on any page at 390px'. Fix by adding overflow-x:hidden to html/body (or using transform+visibility:hidden and not extending doc width when drawer is closed).", "selector": "[data-testid=\"mobile-drawer\"] / html, body", "priority": "HIGH"},
+      {"component": "NotFoundComponent (/xyz-inexistant)", "issue": "Spec asks for the phrase 'Page introuvable'. Actual 404 shows '404 — Cette page a pris un autre chemin'. Functionally the 404 page renders and the 'Retour à l'accueil' link works and returns to /, but the required label 'Page introuvable' is not present. Minor copy mismatch.", "selector": "app-not-found h1/h2", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix mobile horizontal overflow (scrollWidth=750 at 390px viewport) — add overflow-x:hidden on html/body or ensure the closed mobile drawer does not extend document width.",
+    "(Optional) Update 404 page heading to include the phrase 'Page introuvable' to match the spec/brief."
+  ],
+  "critical_code_review_comments": [
+    "Mobile drawer implementation should either use transform: translateX(100%) inside an overflow-x:hidden ancestor OR conditionally *ngIf out of the DOM when closed. Currently it leaks layout width on every route.",
+    "404 route wildcard works and preserves header/footer chrome (good), but the visible label should mirror the spec's 'Page introuvable' terminology.",
+    "All required data-testids are present and stable: header-book-btn, cta-banner-book-btn, contact-book-btn, nav-accompaniments-toggle, nav-drop-/vae, mobile-menu-toggle, mobile-drawer, faq-toggle-{i}, contact-form fields + contact-success. Good testability."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "~92% (only mobile horizontal overflow + minor 404 copy)"},
+  "seed_data_creation": "None (fully mocked in ContentService).",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Home eager route works instantly; lazy routes preload after first paint (PreloadAllModules) — brief settle time (~1.2s) is enough before asserting. Use client-side clicks OR direct URL nav; both work. All data-testids listed in the review request are present. Verified working: dropdown toggle (nav-accompaniments-toggle) reveals the 4 accompaniment links (they exist in DOM as anchors with data-testid nav-drop-/xxx but visibility toggles); FAQ toggles use aria-expanded; contact form validates on empty submit (10 error elements shown), rejects invalid email, accepts valid email + demande select + >=10 char message and shows [data-testid=contact-success]; all three book buttons point to https://calendly.com/mevolia with target=_blank. Mobile drawer opens/closes correctly and contains all 7 nav links + a book button. Only remaining functional gap = horizontal overflow at 390px caused by the closed drawer sitting off-canvas without overflow-x:hidden on html/body.",
+  "rca of the issue": "Mobile drawer element ([data-testid=mobile-drawer]) is rendered permanently in the DOM. When closed it is positioned outside the viewport (bounding rect left=407, right=750 on a 390px viewport). Because html/body do not have overflow-x:hidden, the document layout width becomes 750, producing horizontal scroll on every page at mobile widths. Reproduction: open any route at 390x844, evaluate document.documentElement.scrollWidth -> 750. Mitigation options: (1) add `html, body { overflow-x: hidden; }` in global styles; (2) apply `visibility: hidden` and clip the drawer wrapper when closed; (3) *ngIf the drawer's content only when open."
+}

@@ -1,0 +1,91 @@
+.footer {
+  position: relative;
+  background: var(--cream-100);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(3rem, 6vw, 5rem);
+  overflow: hidden;
+}
+.footer__deco {
+  position: absolute;
+  top: -10px;
+  right: 4%;
+  color: var(--sand-200);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.footer__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.2fr 1.1fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.footer__desc { color: var(--ink-soft); margin: 1.25rem 0 1.5rem; max-width: 34ch; font-size: 0.98rem; }
+
+.footer__contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  transition: color 0.2s ease;
+  app-icon { color: var(--terracotta); flex-shrink: 0; }
+}
+a.footer__contact:hover { color: var(--terracotta); }
+
+.footer__title {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1.1rem;
+}
+.footer__col ul { display: grid; gap: 0.7rem; }
+.footer__col a {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.footer__col a:hover { color: var(--terracotta); padding-left: 4px; }
+
+.footer__social {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--olive);
+  color: var(--cream-50);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.footer__social:hover { background: var(--olive-dark); transform: translateY(-3px); }
+.footer__note { color: var(--ink-soft); font-size: 0.88rem; margin-top: 1.1rem; max-width: 28ch; }
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.5rem 24px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-mute);
+  font-size: 0.88rem;
+}
+.footer__legal { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.footer__legal a { color: var(--ink-mute); transition: color 0.2s ease; }
+.footer__legal a:hover { color: var(--terracotta); }
+
+@media (max-width: 900px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+}

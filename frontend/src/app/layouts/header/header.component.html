@@ -1,0 +1,92 @@
+<header class="header" [class.header--scrolled]="scrolled()" [class.header--open]="menuOpen()">
+  <div class="container header__bar">
+    <app-logo />
+
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="nav__list">
+        @for (link of primaryLinks; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="is-active"
+              [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+              class="nav__link"
+            >{{ link.label }}</a>
+          </li>
+        }
+
+        <li
+          class="nav__item nav__item--drop"
+          (mouseenter)="dropdownOpen.set(true)"
+          (mouseleave)="dropdownOpen.set(false)"
+        >
+          <button
+            type="button"
+            class="nav__link nav__drop-btn"
+            [attr.aria-expanded]="dropdownOpen()"
+            aria-haspopup="true"
+            (click)="toggleDropdown()"
+            data-testid="nav-accompaniments-toggle"
+          >
+            Mes accompagnements
+            <app-icon name="chevron-down" [size]="16" />
+          </button>
+          <div class="nav__dropdown" [class.is-open]="dropdownOpen()">
+            <ul>
+              @for (child of accompaniments; track child.path) {
+                <li>
+                  <a [routerLink]="child.path" routerLinkActive="is-active" class="nav__dropdown-link" [attr.data-testid]="'nav-drop-' + child.path">
+                    {{ child.label }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a routerLink="/contact" routerLinkActive="is-active" class="nav__link">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__cta">
+      <app-button
+        [href]="config.bookingUrl"
+        [external]="true"
+        variant="primary"
+        size="sm"
+        iconLeft="calendar"
+        testid="header-book-btn"
+      >Prendre rendez-vous</app-button>
+    </div>
+
+    <button
+      type="button"
+      class="header__burger"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Ouvrir le menu"
+      (click)="toggleMenu()"
+      data-testid="mobile-menu-toggle"
+    >
+      <app-icon [name]="menuOpen() ? 'x' : 'menu'" [size]="26" />
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" [class.is-open]="menuOpen()" data-testid="mobile-drawer">
+    <nav class="drawer__nav" aria-label="Navigation mobile">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" class="drawer__link">Accueil</a>
+      <a routerLink="/a-propos" routerLinkActive="is-active" class="drawer__link">À propos</a>
+      <span class="drawer__group-label">Mes accompagnements</span>
+      @for (child of accompaniments; track child.path) {
+        <a [routerLink]="child.path" routerLinkActive="is-active" class="drawer__link drawer__link--sub">{{ child.label }}</a>
+      }
+      <a routerLink="/contact" routerLinkActive="is-active" class="drawer__link">Contact</a>
+      <app-button [href]="config.bookingUrl" [external]="true" variant="primary" [block]="true" iconLeft="calendar" testid="drawer-book-btn">
+        Prendre rendez-vous
+      </app-button>
+    </nav>
+  </div>
+  <div class="drawer__backdrop" [class.is-open]="menuOpen()" (click)="toggleMenu()" aria-hidden="true"></div>
+</header>

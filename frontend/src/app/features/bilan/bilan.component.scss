@@ -1,0 +1,49 @@
+@use 'prestation' as *;
+
+.accomp { background: var(--cream-100); }
+.accomp__inner { max-width: 760px; margin: 0 auto; }
+.modalities-sec { background: var(--cream-50); }
+
+/* Phases */
+.phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+.phase {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 2.25rem 2rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.phase:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.phase__num {
+  font-family: var(--font-display);
+  font-size: 3rem; font-weight: 700;
+  color: var(--ochre);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.phase__title { font-size: 1.3rem; margin-bottom: 0.6rem; }
+.phase__desc { color: var(--ink-soft); margin: 0; font-size: 0.96rem; }
+
+/* Confidentiality */
+.confid {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  background: var(--olive-100);
+  border: 1px solid #d6ddca;
+  border-radius: var(--r-lg);
+  padding: 2rem 2.5rem;
+}
+.confid__icon {
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  width: 68px; height: 68px; border-radius: 50%;
+  background: var(--white); color: var(--olive);
+}
+.confid h3 { font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--olive-dark); }
+.confid p { margin: 0; color: var(--ink-soft); }
+
+@media (max-width: 900px) { .phases { grid-template-columns: 1fr; } .confid { flex-direction: column; text-align: center; } }

@@ -1,0 +1,21 @@
+// Responsive breakpoint mixins (max-width, mobile-first fallbacks)
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+@mixin respond($name) {
+  $value: map-get($breakpoints, $name);
+  @media (max-width: $value) {
+    @content;
+  }
+}
+
+@mixin respond-up($name) {
+  $value: map-get($breakpoints, $name);
+  @media (min-width: $value) {
+    @content;
+  }
+}

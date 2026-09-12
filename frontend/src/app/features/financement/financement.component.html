@@ -1,0 +1,55 @@
+<app-page-hero
+  eyebrow="Financer son accompagnement"
+  title="Des solutions existent pour"
+  accent="financer votre projet."
+>
+  <p class="lead" style="margin-top:1.5rem;max-width:60ch;">
+    Engager une démarche de formation, de VAE ou de bilan de compétences représente un investissement.
+    Selon votre situation, différentes solutions de financement peuvent être envisagées. Je vous aide à
+    identifier les dispositifs les plus adaptés.
+  </p>
+</app-page-hero>
+
+<!-- Options -->
+<section class="section">
+  <div class="container">
+    <app-section-heading align="center" eyebrow="Selon votre projet" title="Le financement selon" accent="votre situation" />
+    <div class="fin__grid">
+      @for (opt of options; track opt.title; let i = $index) {
+        <article class="fin" [appReveal]="i * 110">
+          <span class="fin__icon"><app-icon [name]="opt.icon" [size]="26" /></span>
+          <h3 class="fin__title">{{ opt.title }}</h3>
+          <p class="fin__intro">{{ opt.intro }}</p>
+          <ul class="fin__list">
+            @for (b of opt.bullets; track b) {
+              <li><app-icon name="check" [size]="15" [strokeWidth]="2.4" /><span>{{ b }}</span></li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Not sure -->
+<section class="section notsure">
+  <div class="container notsure__inner" appReveal>
+    <div class="notsure__text">
+      <span class="eyebrow">Une question fréquente</span>
+      <h2 class="display-3" style="margin:1rem 0 1rem;">Vous ne savez pas quel financement mobiliser ?</h2>
+      <p class="text-muted">
+        Les dispositifs peuvent parfois sembler complexes. Lors de notre premier échange, nous faisons le
+        point ensemble sur :
+      </p>
+    </div>
+    <div class="notsure__panel">
+      <app-checklist [items]="checklist" />
+    </div>
+  </div>
+</section>
+
+<app-cta-banner
+  title="Un projet à financer ?"
+  subtitle="Vous avez un projet d'évolution, de reconnaissance de votre expérience ou de développement des compétences ? Identifions ensemble l'accompagnement le plus adapté."
+  buttonLabel="Prendre rendez-vous"
+/>

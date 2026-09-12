@@ -1,0 +1,143 @@
+<app-page-hero
+  eyebrow="Conception pédagogique"
+  title="Concevoir des formations qui donnent"
+  accent="envie d'apprendre."
+  [image]="images.workspace"
+  imageAlt="Conception de supports pédagogiques"
+>
+  <p class="lead" style="margin-top:1.5rem;max-width:56ch;">
+    Créer une formation ne consiste pas uniquement à assembler du contenu. Une formation efficace est
+    avant tout un parcours pensé pour les apprenants, construit autour d'objectifs clairs.
+  </p>
+  <div actions>
+    <app-button variant="olive" [href]="config.bookingUrl" [external]="true" iconRight="arrow-right" testid="conception-cta-btn">
+      Parlons de votre projet
+    </app-button>
+  </div>
+</app-page-hero>
+
+<!-- Recognize -->
+<section class="section recognize">
+  <div class="container recognize__grid">
+    <div class="recognize__head" appReveal>
+      <span class="eyebrow">Vous vous reconnaissez si…</span>
+      <h2 class="display-3" style="margin-top:1rem;">Vous accompagner là où vous en êtes</h2>
+      <p class="text-muted" style="margin-top:1rem;">
+        J'accompagne les organismes de formation, les entreprises et les formateurs dans la création ou
+        l'évolution de leurs dispositifs pédagogiques.
+      </p>
+    </div>
+    <div class="recognize__list" appReveal>
+      <app-checklist [items]="recognize" />
+    </div>
+  </div>
+</section>
+
+<!-- Questions -->
+<section class="section">
+  <div class="container questions">
+    <app-section-heading
+      align="center"
+      eyebrow="La bonne approche"
+      title="Concevoir une formation, c'est penser"
+      accent="l'ensemble du parcours"
+      subtitle="Une formation ne se résume pas à un support PowerPoint. Pour être efficace, elle doit répondre à plusieurs questions."
+    />
+    <div class="questions__grid">
+      @for (q of questions; track q; let i = $index) {
+        <div class="qcard" [appReveal]="i * 70">
+          <span class="qcard__num">{{ i + 1 }}</span>
+          <p>{{ q }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section class="section steps-sec">
+  <div class="container">
+    <app-section-heading align="center" eyebrow="Mon accompagnement" title="Je peux vous accompagner à" accent="chaque étape" />
+    <div class="steps-grid">
+      @for (step of steps; track step.title; let i = $index) {
+        <article class="stepcard" [appReveal]="i * 90">
+          <span class="stepcard__num">{{ i + 1 }}</span>
+          <h3 class="stepcard__title">{{ step.title }}</h3>
+          <p class="stepcard__desc">{{ step.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Offers -->
+<section class="section offers-sec">
+  <div class="container">
+    <app-section-heading
+      align="center"
+      eyebrow="Des formules adaptées"
+      title="Des accompagnements adaptés à"
+      accent="votre besoin"
+      subtitle="Chaque projet est différent. C'est pourquoi je propose plusieurs niveaux d'accompagnement, selon votre besoin."
+    />
+    <app-offers [offers]="offers" />
+  </div>
+</section>
+
+<!-- Deliverables -->
+<section class="section deliver">
+  <div class="container deliver__grid">
+    <div class="deliver__media" appReveal>
+      <img [src]="images.workspace" alt="Exemples de livrables pédagogiques" loading="lazy" width="560" height="420" />
+    </div>
+    <div>
+      <app-section-heading eyebrow="Exemples de livrables" title="Des supports" accent="prêts à l'emploi" subtitle="Selon votre projet, je peux concevoir :" />
+      <ul class="deliver__list">
+        @for (d of deliverables; track d.label; let i = $index) {
+          <li class="deliver__item" [appReveal]="i * 60">
+            <app-icon [name]="d.icon" [size]="20" />
+            <span>{{ d.label }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section method">
+  <div class="container">
+    <app-section-heading align="center" eyebrow="Ma méthode de travail" title="Une démarche en" accent="5 étapes" />
+    <app-process-timeline [steps]="method" />
+  </div>
+</section>
+
+<!-- Why + modalities -->
+<section class="section why">
+  <div class="container why__grid">
+    <div appReveal>
+      <app-section-heading eyebrow="Pourquoi Mévolia" title="Pourquoi travailler avec" accent="Mévolia ?" />
+      <app-checklist [items]="why" />
+    </div>
+    <aside class="modalities" appReveal>
+      <span class="modalities__icon"><app-icon name="clock" [size]="26" /></span>
+      <h3>Les modalités</h3>
+      <p>Après notre premier échange, une proposition d'accompagnement vous est adressée <strong>sous 48 heures</strong>.</p>
+      <p>L'accompagnement peut débuter sous <strong>une à trois semaines</strong> selon nos disponibilités respectives.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-sec">
+  <div class="container faq-sec__inner">
+    <app-section-heading align="center" eyebrow="Questions fréquentes" title="Vos questions," accent="mes réponses" />
+    <app-faq-accordion [items]="faqs" />
+  </div>
+</section>
+
+<app-cta-banner
+  title="Un projet de formation ?"
+  subtitle="Vous souhaitez créer une nouvelle formation ou faire évoluer un dispositif existant ? Échangeons sur votre projet."
+  buttonLabel="Prendre rendez-vous"
+/>

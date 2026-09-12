@@ -1,0 +1,164 @@
+<!-- HERO -->
+<app-page-hero
+  variant="home"
+  eyebrow="Développement des compétences"
+  title="Développer les compétences,"
+  accent="faire avancer"
+  titleEnd="les projets."
+  [image]="images.heroPortrait"
+  imageAlt="Marion Fassier, consultante en développement des compétences, à son bureau"
+>
+  <p class="hero-intro" style="margin-top:1.5rem;max-width:52ch;">
+    Créer une formation, faire reconnaître son expérience ou réfléchir à une nouvelle étape
+    professionnelle : chaque projet commence par une envie d'évoluer.
+  </p>
+  <p class="hero-intro text-muted" style="max-width:52ch;">
+    Je suis <strong>Marion Fassier</strong>, consultante en développement des compétences et fondatrice
+    de Mévolia. J'accompagne les organismes de formation, les entreprises et les particuliers dans
+    leurs projets liés aux compétences.
+  </p>
+  <div actions>
+    <app-button routerLink="/conception-pedagogique" iconRight="arrow-right" testid="hero-discover-btn">
+      Découvrir mes prestations
+    </app-button>
+    <app-button routerLink="/contact" variant="outline" iconLeft="message-circle" testid="hero-contact-btn">
+      Me contacter
+    </app-button>
+  </div>
+</app-page-hero>
+
+<!-- EXPERTISES -->
+<section class="section" data-testid="expertises-section">
+  <div class="container">
+    <app-section-heading
+      align="center"
+      eyebrow="Mes accompagnements"
+      title="Trois expertises complémentaires"
+      accent="pour vous accompagner"
+    />
+    <div class="cards">
+      @if (expertisesLoading()) {
+        @for (s of [1,2,3]; track s) {
+          <div class="ecard ecard--skeleton">
+            <app-skeleton width="72px" height="72px" radius="50%" />
+            <app-skeleton width="70%" height="22px" />
+            <app-skeleton width="100%" height="14px" />
+            <app-skeleton width="90%" height="14px" />
+          </div>
+        }
+      } @else {
+        @for (item of expertises(); track item.id; let i = $index) {
+          <a class="ecard" [class]="'ecard--' + item.accent" [routerLink]="item.link" [appReveal]="i * 110" [attr.data-testid]="'expertise-card-' + item.id">
+            <span class="ecard__icon"><app-icon [name]="item.icon" [size]="28" /></span>
+            <h3 class="ecard__title">{{ item.title }}</h3>
+            <p class="ecard__desc">{{ item.description }}</p>
+            <span class="ecard__link">En savoir plus <app-icon name="arrow-right" [size]="17" /></span>
+          </a>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why">
+  <div class="container why__grid">
+    <div class="why__media" appReveal>
+      <img [src]="images.collaboration" alt="Séance de travail collaborative autour d'un projet" loading="lazy" width="600" height="440" />
+    </div>
+    <div class="why__content">
+      <app-section-heading
+        eyebrow="Pourquoi Mévolia"
+        title="Pourquoi choisir"
+        accent="Mévolia ?"
+        subtitle="Chaque accompagnement est pensé pour répondre à votre réalité, à vos objectifs et à vos contraintes. Mon approche repose sur quatre engagements."
+      />
+      <div class="why__features">
+        @for (f of features; track f.title; let i = $index) {
+          <div class="feat" [appReveal]="i * 80">
+            <span class="feat__icon"><app-icon [name]="f.icon" [size]="22" /></span>
+            <div>
+              <h3 class="feat__title">{{ f.title }}</h3>
+              <p class="feat__desc">{{ f.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="section method">
+  <div class="container">
+    <app-section-heading
+      align="center"
+      eyebrow="Ma méthode de travail"
+      title="Votre projet en"
+      accent="5 étapes"
+    />
+    <app-process-timeline [steps]="steps" />
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section values">
+  <div class="container">
+    <app-section-heading
+      align="center"
+      eyebrow="Les 3E"
+      title="Les valeurs de"
+      accent="Mévolia"
+      subtitle="Écouter pour comprendre. S'engager pour accompagner. Faire évoluer pour révéler le potentiel."
+    />
+    <div class="values__grid">
+      @for (v of values; track v.title; let i = $index) {
+        <article class="vcard" [appReveal]="i * 120">
+          <span class="vcard__letter" aria-hidden="true">{{ v.letter }}</span>
+          <span class="vcard__icon"><app-icon [name]="v.icon" [size]="24" /></span>
+          <h3 class="vcard__title">{{ v.title }}</h3>
+          <p class="vcard__desc">{{ v.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testi" data-testid="testimonials-section">
+  <div class="container">
+    <app-section-heading
+      align="center"
+      eyebrow="Témoignages"
+      title="Ils m'ont fait"
+      accent="confiance"
+      subtitle="Ils m'ont accompagnée tout au long de mon parcours professionnel. Aujourd'hui, je mets cette expérience au service de vos projets."
+    />
+    <div class="testi__grid">
+      @if (testimonialsLoading()) {
+        @for (s of [1,2,3]; track s) {
+          <div class="tcard tcard--skeleton">
+            <app-skeleton width="40px" height="40px" radius="8px" />
+            <app-skeleton width="100%" height="14px" />
+            <app-skeleton width="95%" height="14px" />
+            <app-skeleton width="60%" height="14px" />
+            <app-skeleton width="45%" height="18px" />
+          </div>
+        }
+      } @else {
+        @for (t of testimonials(); track t.id; let i = $index) {
+          <figure class="tcard" [appReveal]="i * 110" [attr.data-testid]="'testimonial-' + t.id">
+            <span class="tcard__quote" aria-hidden="true"><app-icon name="quote" [size]="30" /></span>
+            <blockquote class="tcard__text">{{ t.quote }}</blockquote>
+            <figcaption class="tcard__author">
+              <strong>{{ t.author }}</strong>
+              <span>{{ t.role }}</span>
+            </figcaption>
+          </figure>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-banner />

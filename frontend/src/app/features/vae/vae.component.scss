@@ -1,0 +1,13 @@
+@use 'prestation' as *;
+
+.accomp { background: var(--cream-100); }
+.accomp__inner { max-width: 760px; margin: 0 auto; }
+
+.modalities-sec { background: var(--cream-50); }
+.modalities-note {
+  max-width: 70ch;
+  margin: 2.5rem auto 0;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.modalities-note strong { color: var(--terracotta); }
