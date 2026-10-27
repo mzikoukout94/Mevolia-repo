@@ -1,0 +1,45 @@
+{
+  "summary": "Frontend-only test of Mévolia V3 feedback changes at 1920x800 and 390x844. I checked every page (Home, À propos, Conception, VAE, Bilan, Financement, Contact, legal pages, 404) against the requested list. Almost everything matched. I found 2 CSS bugs and fixed both: (1) the footer social icons were dark grey on sage green and almost invisible, (2) the 'POURQUOI SE FAIRE ACCOMPAGNER ?' check circles on the Bilan page were peach/terracotta instead of sage. A script that scans every element's computed colours found no yellow on any page. No console errors. No horizontal overflow at 390px on 9 routes.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Footer social circles", "issue": "FIXED: the rule '.footer__col a { color: var(--ink-soft) }' is more specific than '.footer__social { color: white }', so the icons were rgb(102,98,90) on a sage rgb(83,98,86) background and almost invisible. They are now white.", "selector": "[data-testid^=footer-social-]", "priority": "HIGH"},
+      {"component": "Bilan 'POURQUOI SE FAIRE ACCOMPAGNER ?' checklist", "issue": "FIXED: the checklist received tone='sage' and added the class .checklist--sage, but that class had no CSS, so the circles stayed peach/terracotta. Added a rule for it; they now use olive-100 with an olive check.", "selector": "[data-testid=bilan-why-accompany] .checklist__mark", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Conception - 6 step cards", "issues": ["Minor: the horizontal arrow line between the 2 rows of step cards touches the step-4 number badge (low priority, cosmetic)."]}
+    ]
+  },
+  "verified": [
+    "Fonts: headings in Lora, body in Inter. Top bar, CTA banner and Modalités card are sage #536256. No yellow on any page (computed-colour scan).",
+    "Top bar links: tel:+33631200177 and mailto:bonjour@xn--mvolia-bva.fr. Logo is an image. Nav order is correct. Dropdown has 3 items and no 'Financer son accompagnement'. header-book-btn opens the Bookings URL with target=_blank.",
+    "Mobile: the drawer starts at y=120, below the top bar and header (bottom at 121). It contains Financement and closes after navigating. scrollWidth is 390 on all routes.",
+    "Home: no eyebrow, correct title, paragraphs come before the buttons, 20px gap between buttons, beige background, framed photo, leaf separator under MES ACCOMPAGNEMENTS, expertise text, timeline shows only numbers, 2 testimonials and the LinkedIn link.",
+    "Footer: badge logo, founder text, email, phone, 3 social links, accompaniments column correct. 'Accessibilité handicap' and 'Réclamations' open pages with matching titles.",
+    "À propos: all texts checked, 'une envie d'avancer' in terracotta, career timeline has 6 items with the right years, 4 diploma downloads show 'Bientôt disponible', photo next to 'Ma façon de travailler'.",
+    "Conception: hero eyebrow kept, CTA after the text, photo of Marion writing. 'Vous vous reconnaissez si…' label is inside the checklist panel and the title ends with '.'. The 5 question cards sit on one row. The 6 steps go from peach to terracotta to sage. Offers subtitle and deliverables order correct. Why-Mévolia block present. FAQ accordion opens and closes, next to the Modalités card.",
+    "VAE: all texts checked. No 'Chaque parcours est unique' subtitle. Modalities note shows 24 heures and Transition Pro. Download shows 'Bientôt disponible'. Aside title correct. FAQ has a photo beside it and the financing question comes before the congé VAE question.",
+    "Bilan: eyebrows and texts checked. Phase numbers are olive-soft, not yellow. 'Un cheminement en 5 temps' has its photo. Download present. FAQ has a photo beside it.",
+    "Financement: hero photo. 3 cards with different pastille colours and the new texts, including the OPCO note.",
+    "Contact: hero photo, comma and period punctuation, email card, 2-line location, select options in the right order, validation errors appear on empty submit.",
+    "404: 'Page introuvable' page with the home button."
+  ],
+  "test_report_links": [],
+  "action_items": [
+    "Optional: give the Conception step-cards arrow line some spacing or a z-index so it does not touch the step-4 badge."
+  ],
+  "critical_code_review_comments": [
+    "On desktop the hidden drawer still renders (display:block, translateX) and makes body.scrollWidth 2298 > 1920; overflow-x:hidden hides it. It is harmless but fragile; consider display:none above the burger breakpoint.",
+    "The tone input on app-checklist had no matching CSS. Check the other tone/variant inputs for the same gap."
+  ],
+  "updated_files": [
+    "/app/frontend/src/app/layouts/footer/footer.component.scss",
+    "/app/frontend/src/app/shared/components/checklist/checklist.component.ts"
+  ],
+  "success_rate": {"backend": "N/A (no backend)", "frontend": "~97% (2 CSS bugs found and fixed, 1 cosmetic nit)"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Static Angular site, no backend. All V3 feedback items checked at 1920x800 and 390x844. Footer social icon colour and Bilan sage checklist were fixed by the testing agent. Download and social links are intentionally placeholders."
+}

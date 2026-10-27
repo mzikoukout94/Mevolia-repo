@@ -25,6 +25,7 @@ import { IconComponent } from '../icon/icon.component';
       flex-shrink: 0; margin-top: 2px; width: 26px; height: 26px; border-radius: 50%;
       display: grid; place-items: center; background: var(--peach-100); color: var(--terracotta);
     }
+    .checklist--sage .checklist__mark { background: var(--olive-100); color: var(--olive); }
   `],
 })
 export class ChecklistComponent {

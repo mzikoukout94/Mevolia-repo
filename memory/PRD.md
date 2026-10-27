@@ -53,9 +53,21 @@ botanical line accents, organic blob hero image, soft shadows, scroll-reveal mic
 - Testing agent iteration_2: **100% frontend**, zero console errors, no horizontal overflow at 390px on
   any route, dropdown/mobile-menu/FAQ/contact-form all working, 404 works.
 
+## V3 client feedback (Word "V3 - Retour-amélioration site", applied Oct 2026)
+- Final brand: logo images (public/images), colours #C46B4B / #536256 / #708072 / #8C9A8A / #E0AD94 / #E8D7C7 / #FCF7F3, no yellow; fonts Lora (titles) + Inter (text).
+- Top bar (phone 06.31.20.01.77 + bonjour@mévolia.fr), nav: Accueil, À propos, Mes accompagnements, Financement, Contact.
+- Booking = Microsoft Bookings link (site-config.bookingUrl).
+- Eyebrows with a dash underneath; leaf separator ornament on some home sections; client leaves in CTA/footer/hero.
+- All text changes per page (home, about timeline 6 dates, conception, VAE, bilan, financement, contact), new photos, FAQ + photo layouts, colour progression on conception steps.
+- Footer: new text, phone, LinkedIn/Facebook/Instagram, Accessibilité handicap + Réclamations pages.
+- PROVISIONAL: download links (DOWNLOADS in core/config/assets.ts, empty = "Bientôt disponible"), social URLs (site-config), legal texts.
+- Testing agent iteration_3: ~97% → 2 CSS bugs fixed (footer social icon colour, sage checklist).
+
 ## Backlog / future (from brief)
 - P1: Ressources page (blog/articles) when content exists.
 - P1: "Démarche qualité" page + quality indicators once Qualiopi certified.
-- P1: Downloadable VAE / Bilan spec sheets (PDF "fiches").
-- P2: Real Calendly URL; replace mock ContentService with a real API/CMS.
+- P1: Real PDF files for VAE / Bilan fiches and diplomas (fill DOWNLOADS).
+- P1: Section presenting each offer per page (when defined), Qualiopi mention + CPF badge + Qualiopi indicators page.
+- P1: Real LinkedIn / Facebook / Instagram URLs.
+- P2: Replace mock ContentService with a real API/CMS.
 - P2: Real legal texts (mentions légales, confidentialité, CGV, cookies) + cookie banner.

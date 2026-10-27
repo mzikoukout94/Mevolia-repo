@@ -8,7 +8,7 @@
 .questions__grid--row .qcard p { font-size: 0.92rem; line-height: 1.5; }
 
 /* Steps: colour progression + arrow in the background */
-.steps-grid--progress { position: relative; }
+.steps-grid--progress { position: relative; row-gap: 4rem; }
 .steps-grid--progress::before {
   content: '';
   position: absolute;
