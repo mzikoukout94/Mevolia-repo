@@ -7,10 +7,10 @@
 }
 .footer__deco {
   position: absolute;
-  top: -10px;
+  top: 24px;
   right: 4%;
-  color: var(--sand-200);
-  opacity: 0.7;
+  width: 110px;
+  opacity: 0.35;
   pointer-events: none;
 }
 
@@ -22,7 +22,7 @@
   padding-bottom: 3rem;
 }
 
-.footer__desc { color: var(--ink-soft); margin: 1.25rem 0 1.5rem; max-width: 34ch; font-size: 0.98rem; }
+.footer__desc { color: var(--ink-soft); margin: 1.25rem 0 1.5rem; max-width: 34ch; font-size: 0.95rem; }
 
 .footer__contact {
   display: flex;
@@ -53,6 +53,7 @@ a.footer__contact:hover { color: var(--terracotta); }
 }
 .footer__col a:hover { color: var(--terracotta); padding-left: 4px; }
 
+.footer__socials { display: flex; gap: 0.75rem; }
 .footer__social {
   display: inline-grid;
   place-items: center;
@@ -60,9 +61,10 @@ a.footer__contact:hover { color: var(--terracotta); }
   height: 44px;
   border-radius: 50%;
   background: var(--olive);
-  color: var(--cream-50);
+  color: var(--white);
   transition: background 0.25s ease, transform 0.25s ease;
 }
+.footer__social--fill ::ng-deep svg { fill: currentColor; stroke-width: 0.5; }
 .footer__social:hover { background: var(--olive-dark); transform: translateY(-3px); }
 .footer__note { color: var(--ink-soft); font-size: 0.88rem; margin-top: 1.1rem; max-width: 28ch; }
 
@@ -77,7 +79,7 @@ a.footer__contact:hover { color: var(--terracotta); }
   color: var(--ink-mute);
   font-size: 0.88rem;
 }
-.footer__legal { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.footer__legal { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; }
 .footer__legal a { color: var(--ink-mute); transition: color 0.2s ease; }
 .footer__legal a:hover { color: var(--terracotta); }
 

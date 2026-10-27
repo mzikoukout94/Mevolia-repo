@@ -58,12 +58,29 @@ export class LegalComponent {
         ]},
         { heading: 'Hébergement', body: ["Le nom et les coordonnées de l'hébergeur seront précisés ici."] },
         { heading: 'Propriété intellectuelle', body: ["L'ensemble des contenus de ce site (textes, visuels, logo) est la propriété de Mévolia, sauf mention contraire."] },
-        { heading: 'Accessibilité handicap', body: [
-          "Mévolia veille à rendre ses accompagnements accessibles au plus grand nombre. Lors du premier échange, les besoins spécifiques liés à une situation de handicap peuvent être identifiés afin d'étudier ensemble les adaptations possibles.",
-          `Contact référent handicap : ${this.config.founder} — ${this.config.phoneDisplay} — ${this.config.email}.`,
+      ],
+    },
+    'accessibilite': {
+      title: 'Accessibilité handicap',
+      intro: "Mévolia veille à rendre ses accompagnements accessibles au plus grand nombre.",
+      sections: [
+        { heading: 'Adapter votre accompagnement', body: [
+          "Lors du premier échange, les besoins spécifiques liés à une situation de handicap peuvent être identifiés afin d'étudier ensemble les adaptations possibles (rythme, supports, modalités à distance ou en présentiel).",
         ]},
-        { heading: 'Réclamations', body: [
-          `Vos retours sont importants. Toute réclamation peut être adressée par écrit à ${this.config.email}. Chaque demande fait l'objet d'un traitement et d'une réponse dans un délai défini.`,
+        { heading: 'Référent handicap', body: [
+          `${this.config.founder} — ${this.config.phoneDisplay} — ${this.config.email}.`,
+        ]},
+      ],
+    },
+    'reclamations': {
+      title: 'Réclamations',
+      intro: "Vos retours sont importants et permettent d'améliorer la qualité des accompagnements.",
+      sections: [
+        { heading: 'Comment formuler une réclamation ?', body: [
+          `Toute réclamation peut être adressée par écrit à ${this.config.email} ou par téléphone au ${this.config.phoneDisplay}.`,
+        ]},
+        { heading: 'Traitement de votre demande', body: [
+          "Chaque demande fait l'objet d'un accusé de réception, d'une analyse et d'une réponse dans un délai défini.",
         ]},
       ],
     },

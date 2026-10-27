@@ -2,8 +2,8 @@
   eyebrow="Conception pédagogique"
   title="Concevoir des formations qui donnent"
   accent="envie d'apprendre."
-  [image]="images.workspace"
-  imageAlt="Conception de supports pédagogiques"
+  [image]="images.marionWriting"
+  imageAlt="Marion Fassier en train de concevoir une formation"
 >
   <p class="lead" style="margin-top:1.5rem;max-width:56ch;">
     Créer une formation ne consiste pas uniquement à assembler du contenu. Une formation efficace est
@@ -20,14 +20,14 @@
 <section class="section recognize">
   <div class="container recognize__grid">
     <div class="recognize__head" appReveal>
-      <span class="eyebrow">Vous vous reconnaissez si…</span>
-      <h2 class="display-3" style="margin-top:1rem;">Vous accompagner là où vous en êtes</h2>
+      <h2 class="display-3">Vous accompagner là où vous en êtes.</h2>
       <p class="text-muted" style="margin-top:1rem;">
         J'accompagne les organismes de formation, les entreprises et les formateurs dans la création ou
         l'évolution de leurs dispositifs pédagogiques.
       </p>
     </div>
     <div class="recognize__list" appReveal>
+      <span class="eyebrow recognize__label">Vous vous reconnaissez si…</span>
       <app-checklist [items]="recognize" />
     </div>
   </div>
@@ -43,7 +43,7 @@
       accent="l'ensemble du parcours"
       subtitle="Une formation ne se résume pas à un support PowerPoint. Pour être efficace, elle doit répondre à plusieurs questions."
     />
-    <div class="questions__grid">
+    <div class="questions__grid questions__grid--row" data-testid="conception-questions">
       @for (q of questions; track q; let i = $index) {
         <div class="qcard" [appReveal]="i * 70">
           <span class="qcard__num">{{ i + 1 }}</span>
@@ -58,10 +58,10 @@
 <section class="section steps-sec">
   <div class="container">
     <app-section-heading align="center" eyebrow="Mon accompagnement" title="Je peux vous accompagner à" accent="chaque étape" />
-    <div class="steps-grid">
+    <div class="steps-grid steps-grid--progress">
       @for (step of steps; track step.title; let i = $index) {
         <article class="stepcard" [appReveal]="i * 90">
-          <span class="stepcard__num">{{ i + 1 }}</span>
+          <span class="stepcard__num" [style.background]="progress[i]" [attr.data-testid]="'conception-step-' + (i + 1)">{{ i + 1 }}</span>
           <h3 class="stepcard__title">{{ step.title }}</h3>
           <p class="stepcard__desc">{{ step.description }}</p>
         </article>
@@ -78,7 +78,7 @@
       eyebrow="Des formules adaptées"
       title="Des accompagnements adaptés à"
       accent="votre besoin"
-      subtitle="Chaque projet est différent. C'est pourquoi je propose plusieurs niveaux d'accompagnement, selon votre besoin."
+      subtitle="Chaque projet est différent. C'est pourquoi je propose plusieurs niveaux d'accompagnement."
     />
     <app-offers [offers]="offers" />
   </div>
@@ -88,7 +88,7 @@
 <section class="section deliver">
   <div class="container deliver__grid">
     <div class="deliver__media" appReveal>
-      <img [src]="images.workspace" alt="Exemples de livrables pédagogiques" loading="lazy" width="560" height="420" />
+      <img [src]="images.books" alt="Livres de pédagogie, ingénierie de formation, compétences et apprentissage" loading="lazy" width="560" height="420" />
     </div>
     <div>
       <app-section-heading eyebrow="Exemples de livrables" title="Des supports" accent="prêts à l'emploi" subtitle="Selon votre projet, je peux concevoir :" />
@@ -112,27 +112,26 @@
   </div>
 </section>
 
-<!-- Why + modalities -->
+<!-- Why + FAQ + modalities -->
 <section class="section why">
-  <div class="container why__grid">
-    <div appReveal>
+  <div class="container combo">
+    <div class="media-card combo__media" appReveal>
+      <img [src]="images.deskSunny" alt="Bureau lumineux avec carnet et ordinateur" loading="lazy" width="482" height="322" />
+    </div>
+    <div class="combo__why" appReveal>
       <app-section-heading eyebrow="Pourquoi Mévolia" title="Pourquoi travailler avec" accent="Mévolia ?" />
       <app-checklist [items]="why" />
     </div>
-    <aside class="modalities" appReveal>
+    <div class="combo__faq" appReveal data-testid="conception-faq">
+      <app-section-heading eyebrow="Questions fréquentes" title="Vos questions," accent="mes réponses" size="display-3" />
+      <app-faq-accordion [items]="faqs" />
+    </div>
+    <aside class="modalities combo__aside" appReveal>
       <span class="modalities__icon"><app-icon name="clock" [size]="26" /></span>
       <h3>Les modalités</h3>
       <p>Après notre premier échange, une proposition d'accompagnement vous est adressée <strong>sous 48 heures</strong>.</p>
       <p>L'accompagnement peut débuter sous <strong>une à trois semaines</strong> selon nos disponibilités respectives.</p>
     </aside>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section faq-sec">
-  <div class="container faq-sec__inner">
-    <app-section-heading align="center" eyebrow="Questions fréquentes" title="Vos questions," accent="mes réponses" />
-    <app-faq-accordion [items]="faqs" />
   </div>
 </section>
 

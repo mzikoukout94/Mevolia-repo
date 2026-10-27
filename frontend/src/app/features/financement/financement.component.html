@@ -2,6 +2,8 @@
   eyebrow="Financer son accompagnement"
   title="Des solutions existent pour"
   accent="financer votre projet."
+  [image]="images.deskMug"
+  imageAlt="Tasse et carnet sur un bureau lumineux"
 >
   <p class="lead" style="margin-top:1.5rem;max-width:60ch;">
     Engager une démarche de formation, de VAE ou de bilan de compétences représente un investissement.
@@ -16,7 +18,7 @@
     <app-section-heading align="center" eyebrow="Selon votre projet" title="Le financement selon" accent="votre situation" />
     <div class="fin__grid">
       @for (opt of options; track opt.title; let i = $index) {
-        <article class="fin" [appReveal]="i * 110">
+        <article class="fin" [class]="'fin--' + opt.accent" [appReveal]="i * 110" [attr.data-testid]="'fin-card-' + opt.accent">
           <span class="fin__icon"><app-icon [name]="opt.icon" [size]="26" /></span>
           <h3 class="fin__title">{{ opt.title }}</h3>
           <p class="fin__intro">{{ opt.intro }}</p>
@@ -25,6 +27,7 @@
               <li><app-icon name="check" [size]="15" [strokeWidth]="2.4" /><span>{{ b }}</span></li>
             }
           </ul>
+          @if (opt.note) { <p class="fin__note">{{ opt.note }}</p> }
         </article>
       }
     </div>

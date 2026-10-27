@@ -12,7 +12,8 @@ import { IconComponent } from '../../shared/components/icon/icon.component';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { ContentService } from '../../core/services/content.service';
 import { SITE_CONFIG } from '../../core/config/site-config';
-import { IMAGES } from '../../core/config/assets';
+import { DOWNLOADS, IMAGES } from '../../core/config/assets';
+import { DownloadLinkComponent } from '../../shared/components/download-link/download-link.component';
 import { ProcessStep } from '../../core/models/content.models';
 import { IconName } from '../../shared/components/icon/icon.component';
 
@@ -23,7 +24,7 @@ import { IconName } from '../../shared/components/icon/icon.component';
   imports: [
     PageHeroComponent, SectionHeadingComponent, ChecklistComponent, StepListComponent,
     ProcessTimelineComponent, FeatureBandComponent, FaqAccordionComponent, CtaBannerComponent,
-    ButtonComponent, IconComponent, RevealDirective,
+    ButtonComponent, IconComponent, RevealDirective, DownloadLinkComponent,
   ],
   templateUrl: './vae.component.html',
   styleUrl: './vae.component.scss',
@@ -32,6 +33,7 @@ export class VaeComponent {
   private readonly content = inject(ContentService);
   readonly config = inject(SITE_CONFIG);
   readonly images = IMAGES;
+  readonly downloads = DOWNLOADS;
 
   readonly benefits = this.content.getVaeBenefits();
   readonly whyAccompany = this.content.getVaeWhyAccompany();

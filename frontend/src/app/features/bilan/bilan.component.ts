@@ -11,7 +11,8 @@ import { IconComponent } from '../../shared/components/icon/icon.component';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { ContentService } from '../../core/services/content.service';
 import { SITE_CONFIG } from '../../core/config/site-config';
-import { IMAGES } from '../../core/config/assets';
+import { DOWNLOADS, IMAGES } from '../../core/config/assets';
+import { DownloadLinkComponent } from '../../shared/components/download-link/download-link.component';
 
 @Component({
   selector: 'app-bilan',
@@ -20,7 +21,7 @@ import { IMAGES } from '../../core/config/assets';
   imports: [
     PageHeroComponent, SectionHeadingComponent, ChecklistComponent, StepListComponent,
     FeatureBandComponent, FaqAccordionComponent, CtaBannerComponent, ButtonComponent,
-    IconComponent, RevealDirective,
+    IconComponent, RevealDirective, DownloadLinkComponent,
   ],
   templateUrl: './bilan.component.html',
   styleUrl: './bilan.component.scss',
@@ -29,6 +30,7 @@ export class BilanComponent {
   private readonly content = inject(ContentService);
   readonly config = inject(SITE_CONFIG);
   readonly images = IMAGES;
+  readonly downloads = DOWNLOADS;
 
   readonly reasons = this.content.getBilanReasons();
   readonly whyAccompany = this.content.getBilanWhyAccompany();

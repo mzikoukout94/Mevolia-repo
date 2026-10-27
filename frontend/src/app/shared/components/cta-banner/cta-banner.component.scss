@@ -23,7 +23,7 @@
   }
 }
 
-.cta__deco { color: var(--ochre-soft); flex-shrink: 0; opacity: 0.9; }
+.cta__deco { width: 64px; height: auto; flex-shrink: 0; padding: 10px; background: var(--cream-50); border-radius: 50%; box-sizing: content-box; }
 
 .cta__text h2 { color: var(--cream-50); margin-bottom: 0.5rem; }
 .cta__text p { color: rgba(253, 251, 247, 0.85); margin: 0; max-width: 46ch; }

@@ -2,8 +2,8 @@
   eyebrow="Bilan de compétences"
   title="Faire le point, pour"
   accent="avancer plus sereinement."
-  [image]="images.collaboration"
-  imageAlt="Accompagnement lors d'un bilan de compétences"
+  [image]="images.bilanNotebook"
+  imageAlt="Carnet « Bilan de compétences » posé sur un bureau"
 >
   <p class="lead" style="margin-top:1.5rem;max-width:56ch;">
     Le bilan de compétences est un temps que l'on s'accorde pour réfléchir à son parcours, mieux
@@ -21,11 +21,13 @@
 <section class="section recognize">
   <div class="container recognize__grid">
     <div class="recognize__head" appReveal>
-      <span class="eyebrow">Pourquoi faire un bilan ?</span>
+      <span class="eyebrow">Pourquoi faire un bilan de compétences ?</span>
       <h2 class="display-3" style="margin-top:1rem;">Explorer avant de choisir</h2>
       <p class="text-muted" style="margin-top:1rem;">
-        Il n'est pas nécessaire d'avoir un projet déjà défini. Le bilan permet justement de prendre le
-        temps d'explorer différentes pistes. Il peut vous permettre de :
+        Il n'est pas nécessaire d'avoir un projet déjà défini. Le bilan de compétences permet justement de
+        prendre le temps d'explorer différentes pistes. Que vous soyez salarié, indépendant, demandeur
+        d'emploi ou en réflexion sur votre avenir professionnel, le bilan de compétences peut vous aider à y
+        voir plus clair. Il peut vous permettre de :
       </p>
     </div>
     <div class="recognize__list" appReveal>
@@ -38,15 +40,15 @@
 <section class="section">
   <div class="container split-grid">
     <div appReveal>
-      <app-section-heading eyebrow="Pourquoi se faire accompagner" title="Un regard extérieur pour" accent="avancer" />
+      <app-section-heading eyebrow="Pourquoi se faire accompagner ?" title="Un regard extérieur pour" accent="avancer" />
       <p class="text-muted lead-narrow">
         Faire un bilan ne consiste pas simplement à répondre à des questionnaires. C'est une démarche de
         réflexion qui demande du temps, de la méthode et un regard extérieur pour analyser son parcours
         avec recul.
       </p>
     </div>
-    <div class="recognize__list" appReveal>
-      <app-checklist [items]="whyAccompany" />
+    <div class="recognize__list" appReveal data-testid="bilan-why-accompany">
+      <app-checklist [items]="whyAccompany" tone="sage" />
     </div>
   </div>
 </section>
@@ -69,9 +71,14 @@
 
 <!-- Mon accompagnement -->
 <section class="section accomp">
-  <div class="container accomp__inner">
-    <app-section-heading align="center" eyebrow="Mon accompagnement" title="Un cheminement en" accent="cinq temps" subtitle="Un temps de réflexion et d'action pour construire un projet professionnel qui vous ressemble." />
-    <app-step-list [items]="accompaniment" accent="ochre" />
+  <div class="container accomp-split">
+    <div class="media-card" appReveal>
+      <img [src]="images.deskSunnyLg" alt="Bureau lumineux avec carnet, ordinateur et plante" loading="lazy" width="640" height="427" />
+    </div>
+    <div>
+      <app-section-heading eyebrow="Mon accompagnement" title="Un cheminement en" accent="5 temps" subtitle="Un temps de réflexion et d'action pour construire un projet professionnel qui vous ressemble." />
+      <app-step-list [items]="accompaniment" accent="sage" />
+    </div>
   </div>
 </section>
 
@@ -80,6 +87,13 @@
   <div class="container">
     <app-section-heading align="center" eyebrow="Modalités pratiques" title="Un cadre" accent="clair et confidentiel" />
     <app-feature-band [features]="modalities" />
+    <div class="dl-row" appReveal>
+      <app-download-link
+        label="Fiche téléchargeable : Détails pratique du bilan de compétences"
+        [url]="downloads.bilanFiche"
+        testid="bilan-download-fiche"
+      />
+    </div>
   </div>
 </section>
 
@@ -115,9 +129,14 @@
 
 <!-- FAQ -->
 <section class="section faq-sec">
-  <div class="container faq-sec__inner">
-    <app-section-heading align="center" eyebrow="Questions fréquentes" title="Vos questions," accent="mes réponses" />
-    <app-faq-accordion [items]="faqs" />
+  <div class="container faq-split">
+    <div class="media-card" appReveal>
+      <img [src]="images.deskChair2" alt="Bureau avec ordinateur portable et carnet" loading="lazy" width="594" height="396" />
+    </div>
+    <div data-testid="bilan-faq">
+      <app-section-heading eyebrow="Questions fréquentes" title="Vos questions," accent="mes réponses" />
+      <app-faq-accordion [items]="faqs" />
+    </div>
   </div>
 </section>
 

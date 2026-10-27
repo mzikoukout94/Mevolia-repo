@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LogoComponent } from '../../shared/components/logo/logo.component';
-import { IconComponent } from '../../shared/components/icon/icon.component';
+import { IconComponent, IconName } from '../../shared/components/icon/icon.component';
 import { SITE_CONFIG } from '../../core/config/site-config';
+import { BRAND } from '../../core/config/assets';
 
 @Component({
   selector: 'app-footer',
@@ -14,11 +15,13 @@ import { SITE_CONFIG } from '../../core/config/site-config';
 })
 export class FooterComponent {
   readonly config = inject(SITE_CONFIG);
+  readonly brand = BRAND;
   readonly year = new Date().getFullYear();
 
   readonly navLinks = [
     { label: 'Accueil', path: '/' },
     { label: 'À propos', path: '/a-propos' },
+    { label: 'Financement', path: '/financement' },
     { label: 'Contact', path: '/contact' },
   ];
 
@@ -26,7 +29,12 @@ export class FooterComponent {
     { label: 'Conception pédagogique', path: '/conception-pedagogique' },
     { label: 'Accompagnement VAE', path: '/vae' },
     { label: 'Bilan de compétences', path: '/bilan-de-competences' },
-    { label: 'Financer son accompagnement', path: '/financement' },
+  ];
+
+  readonly socials: { label: string; icon: IconName; url: string }[] = [
+    { label: 'LinkedIn', icon: 'linkedin', url: this.config.linkedin },
+    { label: 'Facebook', icon: 'facebook', url: this.config.facebook },
+    { label: 'Instagram', icon: 'instagram', url: this.config.instagram },
   ];
 
   readonly legalLinks = [
@@ -34,5 +42,7 @@ export class FooterComponent {
     { label: 'Politique de confidentialité', path: '/politique-de-confidentialite' },
     { label: 'CGV', path: '/cgv' },
     { label: 'Cookies', path: '/cookies' },
+    { label: 'Accessibilité handicap', path: '/accessibilite-handicap' },
+    { label: 'Réclamations', path: '/reclamations' },
   ];
 }

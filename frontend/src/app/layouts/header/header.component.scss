@@ -8,6 +8,23 @@
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
+/* Contact top bar */
+.topbar {
+  height: var(--topbar-h);
+  background: var(--olive);
+  color: var(--cream-50);
+  font-size: 0.82rem;
+}
+.topbar__inner { display: flex; align-items: center; justify-content: flex-end; gap: 1rem; height: 100%; }
+.topbar__item {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--cream-50);
+  transition: color 0.2s ease;
+  app-icon { color: var(--peach); }
+}
+.topbar__item:hover { color: var(--peach); }
+.topbar__sep { width: 1px; height: 14px; background: rgba(252, 247, 243, 0.35); }
+
 .header--scrolled {
   border-bottom-color: var(--line);
   box-shadow: var(--shadow-sm);
@@ -31,8 +48,8 @@
   align-items: center;
   gap: 5px;
   padding: 9px 15px;
-  font-size: 0.98rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--ink);
   border-radius: var(--r-pill);
   background: none;
@@ -102,10 +119,10 @@
 /* Mobile drawer */
 .drawer {
   position: fixed;
-  top: var(--header-h);
+  top: calc(var(--header-h) + var(--topbar-h));
   right: 0;
   width: min(360px, 88vw);
-  height: calc(100dvh - var(--header-h));
+  height: calc(100dvh - var(--header-h) - var(--topbar-h));
   background: var(--cream-50);
   border-left: 1px solid var(--line);
   box-shadow: var(--shadow-lg);
@@ -141,7 +158,7 @@
 
 .drawer__backdrop {
   position: fixed;
-  inset: var(--header-h) 0 0;
+  inset: calc(var(--header-h) + var(--topbar-h)) 0 0;
   background: rgba(56, 52, 45, 0.35);
   opacity: 0;
   visibility: hidden;
@@ -150,7 +167,14 @@
 }
 .drawer__backdrop.is-open { opacity: 1; visibility: visible; }
 
+@media (max-width: 1180px) {
+  .nav__link { padding: 9px 11px; font-size: 0.92rem; }
+}
 @media (max-width: 1024px) {
   .nav, .header__cta { display: none; }
   .header__burger { display: inline-flex; }
+}
+@media (max-width: 640px) {
+  .topbar { font-size: 0.74rem; }
+  .topbar__inner { justify-content: center; gap: 0.75rem; }
 }

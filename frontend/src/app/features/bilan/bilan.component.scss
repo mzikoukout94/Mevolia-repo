@@ -18,13 +18,13 @@
 .phase:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 .phase__num {
   font-family: var(--font-display);
-  font-size: 3rem; font-weight: 700;
-  color: var(--ochre);
+  font-size: 2.6rem; font-weight: 600;
+  color: var(--olive-soft);
   line-height: 1;
   display: block;
   margin-bottom: 0.75rem;
 }
-.phase__title { font-size: 1.3rem; margin-bottom: 0.6rem; }
+.phase__title { font-size: 1.2rem; margin-bottom: 0.6rem; }
 .phase__desc { color: var(--ink-soft); margin: 0; font-size: 0.96rem; }
 
 /* Confidentiality */
@@ -33,7 +33,7 @@
   align-items: center;
   gap: 1.75rem;
   background: var(--olive-100);
-  border: 1px solid #d6ddca;
+  border: 1px solid #d3dbd2;
   border-radius: var(--r-lg);
   padding: 2rem 2.5rem;
 }
@@ -43,7 +43,7 @@
   width: 68px; height: 68px; border-radius: 50%;
   background: var(--white); color: var(--olive);
 }
-.confid h3 { font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--olive-dark); }
+.confid h3 { font-size: 1.3rem; margin-bottom: 0.4rem; color: var(--olive-dark); }
 .confid p { margin: 0; color: var(--ink-soft); }
 
 @media (max-width: 900px) { .phases { grid-template-columns: 1fr; } .confid { flex-direction: column; text-align: center; } }

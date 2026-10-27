@@ -7,7 +7,7 @@ import { IconComponent } from '../icon/icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [IconComponent],
   template: `
-    <ul class="checklist" [class.checklist--cols]="columns() === 2">
+    <ul class="checklist" [class.checklist--cols]="columns() === 2" [class.checklist--sage]="tone() === 'sage'">
       @for (item of items(); track item) {
         <li class="checklist__item">
           <span class="checklist__mark" aria-hidden="true"><app-icon name="check" [size]="15" [strokeWidth]="2.4" /></span>
@@ -30,4 +30,5 @@ import { IconComponent } from '../icon/icon.component';
 export class ChecklistComponent {
   readonly items = input.required<string[]>();
   readonly columns = input<1 | 2>(1);
+  readonly tone = input<'terracotta' | 'sage'>('terracotta');
 }

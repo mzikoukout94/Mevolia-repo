@@ -68,3 +68,12 @@ export interface CareerItem {
   year: string;
   label: string;
 }
+
+export interface FinancementOption {
+  icon: IconName;
+  title: string;
+  accent: 'terracotta' | 'olive' | 'beige';
+  intro: string;
+  bullets: string[];
+  note?: string;
+}

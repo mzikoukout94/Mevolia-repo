@@ -2,6 +2,8 @@
   eyebrow="Contact"
   title="Échangeons autour de"
   accent="votre projet."
+  [image]="images.deskSunny2"
+  imageAlt="Bureau lumineux avec carnet et ordinateur"
 >
   <p class="lead" style="margin-top:1.5rem;max-width:58ch;">
     Vous avez une idée, une envie d'évolution ou simplement besoin d'y voir plus clair ? Chaque
@@ -21,7 +23,7 @@
       </ul>
 
       <div class="contact__cards">
-        <a class="cinfo" [href]="'mailto:' + config.email" data-testid="contact-email-link">
+        <a class="cinfo" [href]="'mailto:' + config.emailHref" data-testid="contact-email-link">
           <span class="cinfo__icon"><app-icon name="mail" [size]="20" /></span>
           <span><strong>Email</strong>{{ config.email }}</span>
         </a>
@@ -31,7 +33,7 @@
         </a>
         <div class="cinfo">
           <span class="cinfo__icon"><app-icon name="map-pin" [size]="20" /></span>
-          <span><strong>Localisation</strong>À distance partout en France · présentiel autour de Mulhouse</span>
+          <span><strong>Localisation</strong>À distance partout en France,<br />Présentiel autour de Mulhouse</span>
         </div>
       </div>
 

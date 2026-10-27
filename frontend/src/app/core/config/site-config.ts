@@ -6,11 +6,15 @@ export interface SiteConfig {
   founder: string;
   role: string;
   email: string;
+  /** Punycode version of the email, used in mailto: links. */
+  emailHref: string;
   phone: string;
   phoneDisplay: string;
   location: string;
   linkedin: string;
-  /** Booking link (Calendly). Replace with the real URL when available. */
+  facebook: string;
+  instagram: string;
+  /** Microsoft Bookings page. */
   bookingUrl: string;
 }
 
@@ -20,11 +24,14 @@ export const siteConfig: SiteConfig = {
   brandName: 'Mévolia',
   tagline: "l'envie d'avancer",
   founder: 'Marion Fassier',
-  role: 'Consultante en développement des compétences',
-  email: 'bonjour@mevolia.fr',
+  role: 'Fondatrice de Mévolia & consultante en développement des compétences',
+  email: 'bonjour@mévolia.fr',
+  emailHref: 'bonjour@xn--mvolia-bva.fr',
   phone: '+33631200177',
-  phoneDisplay: '06 31 20 01 77',
+  phoneDisplay: '06.31.20.01.77',
   location: 'Mulhouse & partout en France (à distance)',
   linkedin: 'https://www.linkedin.com/',
-  bookingUrl: 'https://calendly.com/mevolia',
+  facebook: 'https://www.facebook.com/',
+  instagram: 'https://www.instagram.com/',
+  bookingUrl: 'https://bookings.cloud.microsoft/book/MarionFASSIER1@mevolia.fr/?ismsaljsauthenabled',
 };

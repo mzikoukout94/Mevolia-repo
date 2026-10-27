@@ -12,7 +12,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .offer--olive { --accent: var(--olive); --accent-soft: var(--olive-100); }
-.offer--ochre { --accent: var(--ochre); --accent-soft: var(--ochre-soft); }
+.offer--ochre { --accent: var(--terracotta-soft); --accent-soft: var(--beige); }
 .offer:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .offer__icon {
   display: grid; place-items: center;
@@ -20,7 +20,7 @@
   background: var(--accent-soft); color: var(--accent);
   margin-bottom: 1.3rem;
 }
-.offer__title { font-size: 1.35rem; margin-bottom: 0.75rem; line-height: 1.25; }
+.offer__title { font-size: 1.2rem; margin-bottom: 0.75rem; line-height: 1.25; }
 .offer__desc { color: var(--ink-soft); margin: 0; font-size: 0.98rem; }
 
 @media (max-width: 900px) { .offers { grid-template-columns: 1fr; } }

@@ -5,13 +5,14 @@ import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banne
 import { IconComponent } from '../../shared/components/icon/icon.component';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { ContentService } from '../../core/services/content.service';
-import { IMAGES } from '../../core/config/assets';
+import { DOWNLOADS, IMAGES } from '../../core/config/assets';
+import { DownloadLinkComponent } from '../../shared/components/download-link/download-link.component';
 
 @Component({
   selector: 'app-about',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageHeroComponent, SectionHeadingComponent, CtaBannerComponent, IconComponent, RevealDirective],
+  imports: [PageHeroComponent, SectionHeadingComponent, CtaBannerComponent, IconComponent, RevealDirective, DownloadLinkComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
@@ -19,6 +20,13 @@ export class AboutComponent {
   private readonly content = inject(ContentService);
   readonly images = IMAGES;
   readonly career = this.content.getCareer();
+
+  readonly diplomas = [
+    { label: "Licence Sciences de l'éducation", url: DOWNLOADS.licence, testid: 'download-licence' },
+    { label: 'Master CCRF', url: DOWNLOADS.master, testid: 'download-master' },
+    { label: 'Certificat Professionnel Parcours VAE', url: DOWNLOADS.certifVae, testid: 'download-certif-vae' },
+    { label: 'Certificat Professionnel Bilan de Compétences', url: DOWNLOADS.certifBilan, testid: 'download-certif-bilan' },
+  ];
 
   readonly expertiseBlocks = [
     {
@@ -34,7 +42,7 @@ export class AboutComponent {
     {
       icon: 'heart' as const,
       title: 'Mon engagement associatif',
-      text: "Responsable interne de la formation à la Croix-Rouge française de Mulhouse, je contribue bénévolement à la montée en compétences des bénévoles — apprendre, accompagner et faire grandir les compétences.",
+      text: "Responsable interne de la formation à la Croix-Rouge française de Mulhouse, je contribue bénévolement à la montée en compétences des bénévoles.",
     },
   ];
 }

@@ -1,4 +1,16 @@
 <header class="header" [class.header--scrolled]="scrolled()" [class.header--open]="menuOpen()">
+  <div class="topbar" data-testid="topbar">
+    <div class="container topbar__inner">
+      <a class="topbar__item" [href]="'tel:' + config.phone" data-testid="topbar-phone-link">
+        <app-icon name="phone" [size]="14" /> {{ config.phoneDisplay }}
+      </a>
+      <span class="topbar__sep" aria-hidden="true"></span>
+      <a class="topbar__item" [href]="'mailto:' + config.emailHref" data-testid="topbar-email-link">
+        <app-icon name="mail" [size]="14" /> {{ config.email }}
+      </a>
+    </div>
+  </div>
+
   <div class="container header__bar">
     <app-logo />
 
@@ -44,9 +56,11 @@
           </div>
         </li>
 
-        <li>
-          <a routerLink="/contact" routerLinkActive="is-active" class="nav__link">Contact</a>
-        </li>
+        @for (link of secondaryLinks; track link.path) {
+          <li>
+            <a [routerLink]="link.path" routerLinkActive="is-active" class="nav__link" [attr.data-testid]="'nav-link-' + link.path">{{ link.label }}</a>
+          </li>
+        }
       </ul>
     </nav>
 
@@ -82,7 +96,9 @@
       @for (child of accompaniments; track child.path) {
         <a [routerLink]="child.path" routerLinkActive="is-active" class="drawer__link drawer__link--sub">{{ child.label }}</a>
       }
-      <a routerLink="/contact" routerLinkActive="is-active" class="drawer__link">Contact</a>
+      @for (link of secondaryLinks; track link.path) {
+        <a [routerLink]="link.path" routerLinkActive="is-active" class="drawer__link">{{ link.label }}</a>
+      }
       <app-button [href]="config.bookingUrl" [external]="true" variant="primary" [block]="true" iconLeft="calendar" testid="drawer-book-btn">
         Prendre rendez-vous
       </app-button>

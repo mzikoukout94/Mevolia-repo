@@ -19,6 +19,7 @@
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
 }
+.recognize__intro { margin-top: 1rem; font-weight: 600; color: var(--ink); }
 .recognize__list {
   background: var(--white);
   border: 1px solid var(--line);
@@ -44,12 +45,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .qcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
-.qcard p { margin: 0; font-weight: 600; color: var(--ink); }
+.qcard p { margin: 0; font-weight: 500; color: var(--ink); }
 .qcard__num {
   flex-shrink: 0;
   font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--terracotta);
   line-height: 1;
 }
@@ -71,15 +72,15 @@
   display: grid; place-items: center;
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--terracotta); color: var(--white);
-  font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
-  box-shadow: 0 8px 18px rgba(180, 84, 60, 0.3);
+  font-family: var(--font-display); font-size: 1.2rem; font-weight: 600;
+  box-shadow: 0 8px 18px rgba(196, 107, 75, 0.3);
 }
-.stepcard__title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.stepcard__title { font-size: 1.12rem; margin-bottom: 0.5rem; }
 .stepcard__desc { font-size: 0.94rem; color: var(--ink-soft); margin: 0; }
 
 /* Why + modalities */
 .why { background: var(--cream-100); }
-.why__grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+.why__grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
 .modalities {
   background: var(--olive);
   color: var(--cream-50);
@@ -90,10 +91,10 @@
 .modalities__icon {
   display: inline-grid; place-items: center;
   width: 56px; height: 56px; border-radius: 50%;
-  background: rgba(255,255,255,0.12); color: var(--ochre-soft);
+  background: rgba(255,255,255,0.12); color: var(--peach);
   margin-bottom: 1.25rem;
 }
-.modalities h3 { color: var(--cream-50); font-size: 1.5rem; margin-bottom: 1rem; }
+.modalities h3 { color: var(--cream-50); font-size: 1.35rem; margin-bottom: 1rem; }
 .modalities p { color: rgba(253,251,247,0.85); font-size: 0.98rem; }
 .modalities strong { color: var(--white); }
 
@@ -101,8 +102,9 @@
 .deliver__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
 .deliver__media img {
   width: 100%; aspect-ratio: 4/3; object-fit: cover;
-  border-radius: 60px var(--r-lg) 60px var(--r-lg);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--r-lg);
+  border: 4px solid var(--white);
+  box-shadow: var(--shadow-photo);
 }
 .deliver__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 1.5rem; }
 .deliver__item {
@@ -111,7 +113,7 @@
   border: 1px solid var(--line);
   border-radius: var(--r-pill);
   padding: 0.7rem 1.1rem;
-  font-weight: 600; font-size: 0.92rem;
+  font-weight: 500; font-size: 0.9rem;
   transition: border-color 0.25s ease, transform 0.25s ease;
   app-icon { color: var(--terracotta); flex-shrink: 0; }
 }
@@ -134,3 +136,12 @@
 @media (max-width: 620px) {
   .steps-grid, .deliver__list { grid-template-columns: 1fr; }
 }
+
+/* Accompaniment list with photo */
+.accomp-split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+@media (max-width: 900px) {
+  .accomp-split { grid-template-columns: 1fr; }
+  .accomp-split .media-card { max-width: 480px; }
+}
+
+.dl-row { display: flex; justify-content: center; margin-top: 2rem; }

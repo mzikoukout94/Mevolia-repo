@@ -7,7 +7,8 @@ export type IconName =
   | 'mail' | 'phone' | 'map-pin' | 'linkedin' | 'check' | 'check-circle' | 'file-text'
   | 'presentation' | 'list-checks' | 'compass' | 'search' | 'heart' | 'graduation-cap'
   | 'briefcase' | 'sparkles' | 'pen' | 'layers' | 'download' | 'calendar' | 'quote'
-  | 'star' | 'key' | 'flag' | 'folder' | 'shield' | 'handshake' | 'refresh';
+  | 'star' | 'key' | 'flag' | 'folder' | 'shield' | 'handshake' | 'refresh'
+  | 'facebook' | 'instagram';
 
 @Component({
   selector: 'app-icon',
@@ -67,6 +68,8 @@ export type IconName =
         @case ('sparkles') { <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2z"/><path d="M19 3v3"/><path d="M20.5 4.5h-3"/> }
         @case ('pen') { <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/> }
         @case ('layers') { <path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/> }
+        @case ('facebook') { <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/> }
+        @case ('instagram') { <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><path d="M17.5 6.5h.01"/> }
         @case ('download') { <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/> }
         @case ('calendar') { <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/> }
         @case ('quote') { <path d="M6 17c3 0 4-2 4-5V6H4v6h4c0 3-2 3-2 3z"/><path d="M18 17c3 0 4-2 4-5V6h-6v6h4c0 3-2 3-2 3z"/> }

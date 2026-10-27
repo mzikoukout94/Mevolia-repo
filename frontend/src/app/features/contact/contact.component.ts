@@ -6,6 +6,7 @@ import { IconComponent } from '../../shared/components/icon/icon.component';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 import { ContentService } from '../../core/services/content.service';
 import { SITE_CONFIG } from '../../core/config/site-config';
+import { IMAGES } from '../../core/config/assets';
 
 @Component({
   selector: 'app-contact',
@@ -19,9 +20,10 @@ export class ContactComponent {
   private readonly fb = inject(FormBuilder);
   private readonly content = inject(ContentService);
   readonly config = inject(SITE_CONFIG);
+  readonly images = IMAGES;
 
   readonly reasons = this.content.getContactReasons();
-  readonly requestTypes = ['Bilan de compétences', 'VAE', 'Conception pédagogique', 'Autre'];
+  readonly requestTypes = ['Conception pédagogique', 'VAE', 'Bilan de compétences', 'Autre'];
 
   readonly submitted = signal(false);
   readonly sent = signal(false);
@@ -61,7 +63,7 @@ export class ContactComponent {
       `Type de demande : ${v.demande}\n\n` +
       `Message :\n${v.message}\n`;
 
-    const mailto = `mailto:${this.config.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:${this.config.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
     this.sent.set(true);
   }

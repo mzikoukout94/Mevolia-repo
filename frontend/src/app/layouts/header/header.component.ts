@@ -32,7 +32,11 @@ export class HeaderComponent {
     { label: 'Conception pédagogique', path: '/conception-pedagogique' },
     { label: 'VAE', path: '/vae' },
     { label: 'Bilan de compétences', path: '/bilan-de-competences' },
-    { label: 'Financer son accompagnement', path: '/financement' },
+  ];
+
+  readonly secondaryLinks: NavLink[] = [
+    { label: 'Financement', path: '/financement' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   constructor() {

@@ -30,7 +30,7 @@ export const routes: Routes = [
   {
     path: 'financement',
     loadComponent: () => import('./features/financement/financement.component').then((m) => m.FinancementComponent),
-    title: 'Financer son accompagnement — Mévolia',
+    title: 'Financement — Mévolia',
   },
   {
     path: 'contact',
@@ -60,6 +60,18 @@ export const routes: Routes = [
     loadComponent: () => import('./features/legal/legal.component').then((m) => m.LegalComponent),
     data: { doc: 'cookies' },
     title: 'Cookies — Mévolia',
+  },
+  {
+    path: 'accessibilite-handicap',
+    loadComponent: () => import('./features/legal/legal.component').then((m) => m.LegalComponent),
+    data: { doc: 'accessibilite' },
+    title: 'Accessibilité handicap — Mévolia',
+  },
+  {
+    path: 'reclamations',
+    loadComponent: () => import('./features/legal/legal.component').then((m) => m.LegalComponent),
+    data: { doc: 'reclamations' },
+    title: 'Réclamations — Mévolia',
   },
   {
     path: '**',

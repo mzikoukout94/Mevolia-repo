@@ -26,6 +26,6 @@ import { ProcessStep } from '../../../core/models/content.models';
 })
 export class ProcessTimelineComponent {
   readonly steps = input.required<ProcessStep[]>();
-  private readonly palette = ['var(--olive)', 'var(--sand-200)', 'var(--terracotta)', 'var(--olive-soft)', 'var(--ochre)'];
+  private readonly palette = ['var(--olive)', 'var(--terracotta)', 'var(--olive-soft)', 'var(--terracotta-soft)', 'var(--olive-dark)'];
   color(i: number): string { return this.palette[i % this.palette.length]; }
 }

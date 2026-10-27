@@ -38,4 +38,5 @@ export class ConceptionComponent {
   readonly why = this.content.getConceptionWhy();
   readonly method = this.content.getProcessSteps();
   readonly faqs = this.content.getConceptionFaqs();
+  readonly progress = ['#e0ad94', '#d58a6d', '#c46b4b', '#8c9a8a', '#708072', '#536256'];
 }

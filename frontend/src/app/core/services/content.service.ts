@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
-import { IconName } from '../../shared/components/icon/icon.component';
 import {
-  CareerItem, Deliverable, Expertise, Faq, Feature, Offer,
+  CareerItem, Deliverable, Expertise, Faq, Feature, FinancementOption, Offer,
   ProcessStep, Testimonial, TimelineItem, ValueItem,
 } from '../models/content.models';
 
@@ -51,7 +50,7 @@ export class ContentService {
   getWhyFeatures(): Feature[] {
     return [
       { icon: 'ear', title: 'Une écoute attentive', description: "Pour comprendre vos besoins et construire des solutions réellement adaptées." },
-      { icon: 'award', title: 'Une expertise solide', description: "Nourrie par plus de sept années d'expérience en formation professionnelle et ingénierie pédagogique." },
+      { icon: 'award', title: 'Une expertise solide', description: "Nourrie par plus de sept années d'expérience dans le champ de la formation professionnelle." },
       { icon: 'sprout', title: 'Des solutions concrètes', description: "Directement mobilisables dans votre quotidien professionnel." },
       { icon: 'handshake', title: 'Une relation de confiance', description: "Basée sur la proximité, la transparence et la co-construction." },
     ];
@@ -77,9 +76,8 @@ export class ContentService {
 
   getTestimonials(): Observable<Testimonial[]> {
     return this.stream([
-      { id: 't1', quote: "Marion a une capacité rare à clarifier les projets complexes. Son écoute et sa méthode font toute la différence dans un accompagnement.", author: 'Fanny L.', role: 'Responsable formation' },
-      { id: 't2', quote: "Un vrai regard d'experte, à la fois pédagogique et opérationnel. Nos formations ont gagné en cohérence et en impact.", author: 'Michèle Di Carlo', role: "Directrice d'organisme de formation" },
-      { id: 't3', quote: "Rigoureuse, bienveillante et toujours orientée solutions. Travailler avec Marion, c'est avancer sereinement.", author: 'Ancien manager', role: 'Secteur de la formation' },
+      { id: 't1', quote: "Marion est de celles qui prennent le temps d'explorer un sujet en profondeur pour en comprendre les enjeux et proposer des réponses pertinentes. Elle accorde autant d'importance au fond qu'à la forme, avec un vrai souci de clarté, de qualité et de justesse. Marion est créative, elle a du goût et sait très bien valoriser des supports de formation par exemple.", author: 'Fanny', role: "Responsable d'un organisme de formation" },
+      { id: 't2', quote: "Marion est une professionnelle sérieuse, organisée et créative, qui connaît bien les rouages de la formation et sait les traduire concrètement dans la conception et la mise en œuvre de projets pédagogiques. […] Fiable et impliquée dans les missions qui lui sont confiées, elle sait conjuguer rigueur et créativité, deux qualités particulièrement précieuses dans le domaine de l'ingénierie pédagogique.", author: 'Bernadette', role: "Directrice d'un organisme de formation" },
     ], 700);
   }
 
@@ -126,20 +124,20 @@ export class ContentService {
 
   getConceptionDeliverables(): Deliverable[] {
     return [
-      { icon: 'list-checks', label: 'Scénario pédagogique' },
       { icon: 'file-text', label: 'Déroulé pédagogique' },
+      { icon: 'list-checks', label: 'Scénario pédagogique' },
       { icon: 'presentation', label: "PowerPoint d'animation" },
       { icon: 'book', label: 'Guide du formateur' },
       { icon: 'folder', label: 'Livret participant' },
       { icon: 'clipboard', label: 'Fiches activités' },
       { icon: 'check-circle', label: "Outils d'évaluation" },
-      { icon: 'monitor', label: 'Ressources pour la formation à distance' },
+      { icon: 'monitor', label: 'Ressources formation à distance' },
     ];
   }
 
   getConceptionWhy(): string[] {
     return [
-      "Plus de 7 ans d'expérience en formation professionnelle et ingénierie pédagogique.",
+      "Plus de 7 ans d'expérience dans le champ de la formation professionnelle.",
       'Une approche sur mesure, adaptée à votre contexte.',
       'Des outils concrets, directement mobilisables.',
       'Une ingénierie pédagogique centrée sur les apprenants et les objectifs de formation.',
@@ -159,8 +157,8 @@ export class ContentService {
 
   getVaeBenefits(): string[] {
     return [
-      'Obtenir un diplôme, un titre professionnel ou un CQP.',
-      'Valoriser votre expérience professionnelle.',
+      'Obtenir un diplôme, un titre professionnel ou un Certificat de Qualification Professionnelle (CQP) en lien avec votre expérience professionnelle.',
+      'Valoriser vos compétences et votre parcours.',
       'Évoluer dans votre carrière.',
       'Préparer une reconversion professionnelle.',
       'Renforcer votre employabilité.',
@@ -181,7 +179,7 @@ export class ContentService {
     return [
       { title: 'Définir son projet VAE', description: "Clarifier votre démarche, vos motivations et vos objectifs." },
       { title: 'Vérifier la recevabilité', description: "Vérifier l'adéquation avec une certification et déposer sa demande de recevabilité." },
-      { title: 'Construire son dossier', description: "Formaliser vos activités et les compétences associées selon le référentiel." },
+      { title: 'Construire son dossier', description: "Formaliser vos activités et les compétences associées selon le référentiel de compétences." },
       { title: 'Préparer le jury', description: "Travailler votre présentation orale et anticiper les questions." },
       { title: 'Obtenir la certification', description: "Obtenir tout ou partie de la certification et définir les suites." },
     ];
@@ -191,7 +189,7 @@ export class ContentService {
     return [
       { title: 'Clarifier votre projet', description: "Nous faisons le point sur votre parcours, vos objectifs et la certification la plus adaptée à votre expérience." },
       { title: 'Analyser votre expérience', description: "Nous identifions les missions, activités et compétences valorisables dans votre dossier." },
-      { title: 'Construire votre dossier', description: "Je vous accompagne dans la structuration et la valorisation de votre dossier de validation." },
+      { title: 'Construire votre dossier', description: "Je vous accompagne dans la structuration et la valorisation de votre dossier de validation. J'adopte une posture de facilitatrice grâce à des méthodologies d'écriture." },
       { title: "Préparer l'entretien avec le jury", description: "Nous travaillons votre présentation et la manière de valoriser votre expérience le jour de l'oral." },
       { title: "Vous accompagner jusqu'au bout", description: "Je reste à vos côtés pour répondre à vos questions et vous aider à avancer sereinement." },
     ];
@@ -210,8 +208,8 @@ export class ContentService {
   getVaeModalities(): Feature[] {
     return [
       { icon: 'calendar', title: '3 à 8 mois', description: "Durée adaptée à votre projet et à la certification visée." },
-      { icon: 'users', title: '8 à 15 séances', description: "Séances individuelles au rythme de votre avancement." },
-      { icon: 'clock', title: '1h30 à 2h', description: "Durée moyenne de chaque séance individuelle." },
+      { icon: 'users', title: '7 à 14 séances', description: "Séances individuelles au rythme de votre avancement." },
+      { icon: 'clock', title: '1h à 2h', description: "Durée moyenne de chaque séance individuelle." },
       { icon: 'monitor', title: 'À distance', description: "En visioconférence partout en France, ou en présentiel autour de Mulhouse." },
     ];
   }
@@ -220,7 +218,8 @@ export class ContentService {
     return [
       { question: "Qui peut bénéficier d'une VAE ?", answer: "Toute personne ayant acquis une expérience en lien avec la certification visée peut engager une démarche de VAE." },
       { question: 'Combien de temps dure un accompagnement ?', answer: "La durée dépend de votre disponibilité, de votre expérience et de la certification préparée (généralement 3 à 8 mois)." },
-      { question: 'Puis-je financer mon accompagnement ?', answer: "Selon votre situation, plusieurs dispositifs peuvent être mobilisés (CPF, employeur, France Travail, etc.)." },
+      { question: 'Comment financer mon accompagnement ?', answer: "Selon votre situation, plusieurs dispositifs peuvent être mobilisés : Compte Personnel de Formation (CPF), employeur, Transition Pro, dispositifs régionaux, etc. Nous pourrons étudier ensemble les possibilités de financement." },
+      { question: "Le congé VAE c'est quoi ?", answer: "Vous pouvez, sous certaines conditions, bénéficier d'un congé VAE de 48h maximum, vous permettant de réaliser votre démarche sur votre temps de travail, avec maintien de votre rémunération." },
       { question: 'Les rendez-vous peuvent-ils se faire à distance ?', answer: "Oui, principalement à distance en visioconférence, partout en France. Le présentiel est possible autour de Mulhouse." },
     ];
   }
@@ -232,7 +231,7 @@ export class ContentService {
       'Mieux comprendre vos compétences et vos atouts.',
       'Identifier ce qui vous motive réellement dans votre travail.',
       'Envisager une évolution professionnelle ou une reconversion.',
-      'Prendre conscience de vos ressources professionnelles.',
+      'Prendre conscience de vos compétences et ressources professionnelles.',
       'Construire un projet cohérent avec vos envies et votre situation.',
     ];
   }
@@ -296,31 +295,36 @@ export class ContentService {
 
   /* ============ FINANCEMENT ============ */
 
-  getFinancementOptions(): { icon: IconName; title: string; intro: string; bullets: string[] }[] {
+  getFinancementOptions(): FinancementOption[] {
     return [
       {
-        icon: 'lightbulb', title: 'Conception pédagogique',
-        intro: "Les prestations de conception pédagogique peuvent être financées directement par :",
-        bullets: ['une entreprise', 'un organisme de formation', 'une structure développant ses compétences internes'],
+        icon: 'lightbulb', title: 'Conception pédagogique', accent: 'terracotta',
+        intro: 'Les prestations de conception pédagogique peuvent être financées par :',
+        bullets: [
+          'une entreprise,',
+          'un organisme de formation,',
+          'une autre structure souhaitant développer ou faire évoluer ses dispositifs de formation (associations, collectivités ou institutions).',
+        ],
+        note: "La conception pédagogique n'est pas automatiquement éligible à une prise en charge par un OPCO. Les possibilités sont à étudier selon votre situation.",
       },
       {
-        icon: 'award', title: 'VAE',
-        intro: "La VAE peut bénéficier de différents dispositifs selon votre situation :",
+        icon: 'award', title: 'VAE', accent: 'olive',
+        intro: 'La VAE peut être financée par différents dispositifs, selon votre situation :',
         bullets: [
-          'le Compte Personnel de Formation (CPF), sous conditions',
-          "l'employeur, dans le cadre d'un projet d'évolution",
-          'certains dispositifs liés à votre situation de demandeur d\'emploi',
-          'd\'autres financements adaptés à votre parcours',
+          'le Compte Personnel de Formation (CPF), sous conditions,',
+          "l'employeur, dans le cadre d'un projet d'évolution professionnelle,",
+          "Transition Pro, dans le cadre d'un projet de reconversion professionnelle,",
+          "l'autofinancement, lorsque les autres dispositifs ne peuvent pas être mobilisés.",
         ],
       },
       {
-        icon: 'compass', title: 'Bilan de compétences',
-        intro: "Le bilan de compétences peut également être financé par différents dispositifs :",
+        icon: 'compass', title: 'Bilan de compétences', accent: 'beige',
+        intro: 'Le bilan de compétences peut être financé par différents dispositifs, selon votre situation :',
         bullets: [
-          'le Compte Personnel de Formation (CPF), sous conditions',
-          "l'employeur, dans le cadre d'une démarche d'évolution",
-          "des dispositifs liés à une transition professionnelle",
-          'd\'autres solutions selon votre parcours',
+          'le Compte Personnel de Formation (CPF), sous conditions,',
+          "l'employeur, dans le cadre d'un projet d'évolution professionnelle,",
+          "certains dispositifs liés à votre situation de demandeur d'emploi,",
+          "l'autofinancement, lorsque les autres dispositifs ne peuvent pas être mobilisés.",
         ],
       },
     ];
@@ -334,10 +338,10 @@ export class ContentService {
 
   getContactReasons(): string[] {
     return [
-      "un projet de conception ou d'évolution d'une formation",
-      "un accompagnement à la Validation des Acquis de l'Expérience (VAE)",
-      'un bilan de compétences',
-      'une question sur votre parcours, vos besoins ou votre projet',
+      "un projet de conception ou d'évolution d'une formation,",
+      "un accompagnement à la Validation des Acquis de l'Expérience (VAE),",
+      'un bilan de compétences,',
+      'une question sur votre parcours, vos besoins ou votre projet.',
     ];
   }
 
@@ -345,11 +349,12 @@ export class ContentService {
 
   getCareer(): CareerItem[] {
     return [
-      { year: '2017', label: "Licence Sciences de l'éducation" },
-      { year: '2019', label: 'Master CCRF (Conseiller Consultant Responsable Formation)' },
-      { year: '2019 – 2023', label: 'Formation professionnelle & accompagnement entreprises' },
-      { year: '2023 – 2026', label: 'Ingénierie pédagogique' },
-      { year: '2026', label: 'Création de Mévolia · Formation VAE' },
+      { year: '2017', label: "Obtention de la Licence Sciences de l'éducation - Option Enjeux Contemporains en Éducation et en Formation" },
+      { year: '2019', label: 'Obtention du Master CCRF - Conseiller, Consultant, Responsable Formation' },
+      { year: '2019', label: "En poste : Chargée d'actions de formation,\nAssistante de formation" },
+      { year: '2019 – 2023', label: 'En poste : Chargée de projets Intégration Professionnelle des Réfugiés,\nConseillère emploi formation PME' },
+      { year: '2023 – 2026', label: "En poste : Chargée d'ingénierie pédagogique" },
+      { year: '2026 – 2027', label: 'Création de Mévolia,\nObtention du Certificat Professionnel Architecture et Accompagnement de Parcours VAE,\nObtention du Certificat Professionnel Pratique du Bilan de Compétences' },
     ];
   }
 }

@@ -1,14 +1,13 @@
 <app-page-hero
-  eyebrow="À propos"
   title="Derrière Mévolia, il y a une envie :"
   accent="faire avancer les projets."
   [image]="images.aboutPortrait"
   imageAlt="Marion Fassier, fondatrice de Mévolia"
 >
   <p class="lead" style="margin-top:1.5rem;max-width:54ch;">
-    Je suis Marion, consultante en développement des compétences. J'accompagne les organismes de
-    formation, les entreprises et les particuliers avec une approche simple : prendre le temps de
-    comprendre avant de proposer.
+    Je suis Marion, fondatrice de Mévolia &amp; consultante en développement des compétences. J'accompagne
+    les organismes de formation, les entreprises et les particuliers avec une approche simple : prendre le
+    temps de comprendre avant de proposer.
   </p>
 </app-page-hero>
 
@@ -20,8 +19,8 @@
       <h2 class="display-3" style="margin-top:1rem;">C'est ainsi qu'est née Mévolia</h2>
     </div>
     <div class="prose" appReveal>
-      <p>Créer une formation, accompagner une évolution professionnelle, construire un nouveau parcours… Derrière chaque projet, il y a des personnes, des idées, parfois des doutes, mais surtout une envie d'avancer.</p>
-      <p>Après plusieurs années passées dans la formation professionnelle, l'accompagnement des entreprises et l'ingénierie pédagogique, j'ai eu envie de créer une activité qui me ressemble — une activité où je peux prendre le temps d'écouter, comprendre les besoins et construire des accompagnements réellement adaptés.</p>
+      <p>Créer une formation, accompagner une évolution professionnelle, construire un nouveau parcours… Derrière chaque projet, il y a des personnes, des idées, parfois des doutes, mais surtout <span class="accent">une envie d'avancer</span>.</p>
+      <p>Après plusieurs années passées dans le champ de la formation professionnelle, j'ai eu envie de créer une activité qui me ressemble — une activité où je peux prendre le temps d'écouter, comprendre les besoins et construire des accompagnements réellement adaptés.</p>
       <p>Avant de construire un accompagnement, j'aime comprendre votre contexte, vos besoins et vos objectifs. C'est ce qui me permet de proposer des solutions concrètes, adaptées à votre réalité.</p>
     </div>
   </div>
@@ -30,7 +29,7 @@
 <!-- What I love -->
 <section class="section love">
   <div class="container">
-    <app-section-heading align="center" eyebrow="Ce qui me motive" title="Ce que j'aime dans" accent="mon métier" />
+    <app-section-heading align="center" eyebrow="Ma motivation" title="Ce que j'aime dans" accent="mon métier" />
     <div class="love__grid">
       <p class="love__item" appReveal>Le moment où un projet commence à prendre forme.</p>
       <p class="love__item" [appReveal]="80">Quand une idée encore floue devient un parcours structuré.</p>
@@ -47,8 +46,8 @@
 <section class="section">
   <div class="container">
     <app-section-heading align="center" eyebrow="Mon parcours" title="Plus de 7 ans dans le" accent="développement des compétences" />
-    <ol class="career">
-      @for (item of career; track item.year; let i = $index) {
+    <ol class="career" data-testid="career-timeline">
+      @for (item of career; track $index; let i = $index) {
         <li class="career__item" [appReveal]="i * 90">
           <span class="career__dot" aria-hidden="true"></span>
           <span class="career__year">{{ item.year }}</span>
@@ -57,8 +56,12 @@
       }
     </ol>
     <div class="diplomas" appReveal>
-      <app-icon name="graduation-cap" [size]="22" />
-      <span>Licence Sciences de l'éducation · Master CCRF · Formations VAE & Bilan de compétences</span>
+      <h3 class="diplomas__title"><app-icon name="graduation-cap" [size]="22" /> Mes diplômes &amp; certifications</h3>
+      <div class="diplomas__list">
+        @for (d of diplomas; track d.testid) {
+          <app-download-link [label]="d.label" [url]="d.url" [testid]="d.testid" />
+        }
+      </div>
     </div>
   </div>
 </section>
@@ -66,6 +69,7 @@
 <!-- Expertise blocks -->
 <section class="section blocks">
   <div class="container">
+    <app-section-heading align="center" eyebrow="Mes expériences" title="Une expérience au service de" accent="vos projets" />
     <div class="blocks__grid">
       @for (b of expertiseBlocks; track b.title; let i = $index) {
         <article class="block" [appReveal]="i * 110">
@@ -80,14 +84,19 @@
 
 <!-- Way of working -->
 <section class="section way">
-  <div class="container way__inner" appReveal>
-    <span class="eyebrow">Ma façon de travailler</span>
-    <h2 class="display-3" style="margin:1rem 0 1.25rem;">Des projets construits ensemble</h2>
-    <p class="lead">
-      J'aime les échanges simples et les solutions que l'on peut réellement mettre en œuvre. Vous connaissez
-      votre métier, votre organisation ou votre parcours. De mon côté, je vous apporte un regard extérieur,
-      une méthode et mon expérience pour vous aider à avancer sereinement.
-    </p>
+  <div class="container way__grid">
+    <div appReveal>
+      <span class="eyebrow">Ma façon de travailler</span>
+      <h2 class="display-3" style="margin:1rem 0 1.25rem;">Des projets construits ensemble</h2>
+      <p class="lead">
+        J'aime les échanges simples et les solutions que l'on peut réellement mettre en œuvre. Vous connaissez
+        votre métier, votre organisation ou votre parcours. De mon côté, je vous apporte un regard extérieur,
+        une méthode et mon expérience pour vous aider à avancer sereinement.
+      </p>
+    </div>
+    <div class="media-card" appReveal>
+      <img [src]="images.deskChair" alt="Espace de travail lumineux" loading="lazy" width="602" height="401" />
+    </div>
   </div>
 </section>
 

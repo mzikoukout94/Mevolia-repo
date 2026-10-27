@@ -9,7 +9,7 @@ import { TimelineItem } from '../../../core/models/content.models';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RevealDirective],
   template: `
-    <ol class="steps" [class.steps--accent-olive]="accent() === 'olive'" [class.steps--accent-ochre]="accent() === 'ochre'">
+    <ol class="steps" [class.steps--accent-olive]="accent() === 'olive'" [class.steps--accent-sage]="accent() === 'sage'">
       @for (item of items(); track item.title; let i = $index) {
         <li class="steps__item" [appReveal]="i * 70">
           <div class="steps__marker">
@@ -27,5 +27,5 @@ import { TimelineItem } from '../../../core/models/content.models';
 })
 export class StepListComponent {
   readonly items = input.required<TimelineItem[]>();
-  readonly accent = input<'terracotta' | 'olive' | 'ochre'>('terracotta');
+  readonly accent = input<'terracotta' | 'olive' | 'sage'>('terracotta');
 }
