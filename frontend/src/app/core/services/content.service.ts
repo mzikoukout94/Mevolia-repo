@@ -301,9 +301,9 @@ export class ContentService {
         icon: 'lightbulb', title: 'Conception pédagogique', accent: 'terracotta',
         intro: 'Les prestations de conception pédagogique peuvent être financées par :',
         bullets: [
-          'une entreprise,',
-          'un organisme de formation,',
-          'une autre structure souhaitant développer ou faire évoluer ses dispositifs de formation (associations, collectivités ou institutions).',
+          'Une entreprise,',
+          'Un organisme de formation,',
+          'Une autre structure souhaitant développer ou faire évoluer ses dispositifs de formation (associations, collectivités ou institutions).',
         ],
         note: "La conception pédagogique n'est pas automatiquement éligible à une prise en charge par un OPCO. Les possibilités sont à étudier selon votre situation.",
       },
@@ -311,37 +311,37 @@ export class ContentService {
         icon: 'award', title: 'VAE', accent: 'olive',
         intro: 'La VAE peut être financée par différents dispositifs, selon votre situation :',
         bullets: [
-          'le Compte Personnel de Formation (CPF), sous conditions,',
-          "l'employeur, dans le cadre d'un projet d'évolution professionnelle,",
+          'Le Compte Personnel de Formation (CPF), sous conditions,',
+          "L'employeur, dans le cadre d'un projet d'évolution professionnelle,",
           "Transition Pro, dans le cadre d'un projet de reconversion professionnelle,",
-          "l'autofinancement, lorsque les autres dispositifs ne peuvent pas être mobilisés.",
+          "L'autofinancement, lorsque les autres dispositifs ne peuvent pas être mobilisés.",
         ],
       },
       {
         icon: 'compass', title: 'Bilan de compétences', accent: 'beige',
         intro: 'Le bilan de compétences peut être financé par différents dispositifs, selon votre situation :',
         bullets: [
-          'le Compte Personnel de Formation (CPF), sous conditions,',
-          "l'employeur, dans le cadre d'un projet d'évolution professionnelle,",
-          "certains dispositifs liés à votre situation de demandeur d'emploi,",
-          "l'autofinancement, lorsque les autres dispositifs ne peuvent pas être mobilisés.",
+          'Le Compte Personnel de Formation (CPF), sous conditions,',
+          "L'employeur, dans le cadre d'un projet d'évolution professionnelle,",
+          "Certains dispositifs liés à votre situation de demandeur d'emploi,",
+          "L'autofinancement, lorsque les autres dispositifs ne peuvent pas être mobilisés.",
         ],
       },
     ];
   }
 
   getFinancementChecklist(): string[] {
-    return ['votre situation', 'votre projet', 'les possibilités de financement envisageables', 'les prochaines étapes pour avancer'];
+    return ['Votre situation,', 'Votre projet,', 'Les possibilités de financement envisageables,', 'Les prochaines étapes pour avancer.'];
   }
 
   /* ============ CONTACT ============ */
 
   getContactReasons(): string[] {
     return [
-      "un projet de conception ou d'évolution d'une formation,",
-      "un accompagnement à la Validation des Acquis de l'Expérience (VAE),",
-      'un bilan de compétences,',
-      'une question sur votre parcours, vos besoins ou votre projet.',
+      "Un projet de conception ou d'évolution d'une formation,",
+      "Un accompagnement à la Validation des Acquis de l'Expérience (VAE),",
+      'Un bilan de compétences,',
+      'Une question sur votre parcours, vos besoins ou votre projet.',
     ];
   }
 
